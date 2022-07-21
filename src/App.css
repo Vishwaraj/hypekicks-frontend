@@ -1,0 +1,582 @@
+
+/* styles for landing page */
+
+.title {
+  color: white;
+  padding-left: 5rem;
+  letter-spacing: 2px;
+  font-weight: normal;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.header-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding-right: 4rem;
+
+}
+
+.header-buttons > h3 {
+  font-weight: lighter;
+}
+
+.appbar {
+  display: flex;
+  flex-direction: row;
+}
+
+.carousel-images {
+  margin-top: 5rem;
+}
+
+.info-blocks {
+  width: 98vw;
+  height: 80vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  font-weight: bold;
+}
+
+.block {
+  width: 20vw;
+  height: 20vh;
+  text-align: center;
+}
+
+.block > i {
+  margin-bottom: 0;
+  margin-top: -3rem;
+}
+
+.review-carousel {
+  margin-top: 2rem;
+  margin-bottom: 6rem;
+}
+
+.review {
+  width: 60vw;
+  margin: auto;
+}
+
+.footer {
+  background-color: #212529;
+  color: white;
+  padding-top: 0.5rem;
+  text-align: center;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer > p {
+  margin-bottom: 0;
+  padding-bottom: 1.5rem;
+}
+
+
+/* styles for login page */
+
+.login-page {
+  margin-top: 10rem;
+  margin-left: 5rem;
+  margin-bottom: 4rem;
+  margin-right: 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.form-input {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 25vw;
+}
+
+.login-button {
+  margin-top: 1rem;
+  text-align: center;
+  border-bottom: 1px solid grey;
+  padding-bottom: 2rem;
+}
+
+.login-option-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.login-form {
+  margin-right: 5rem;
+  padding: 2rem 1rem 1rem 1rem;
+  border-radius: 1rem;
+  /* box-shadow: 0 0 1rem #ccc; */
+}
+
+.login-form > h3 {
+  margin-top: 2rem;
+  text-align: center;
+} 
+
+/* styles for sign up page */
+
+.sign-up-page {
+  margin-top: 7rem;
+  margin-left: 22rem;
+  margin-right: 5rem;
+  margin-bottom: 4rem;
+}
+
+.sign-up-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+  width: 50vw;
+}
+
+/* styles for home page */
+
+.sidebar {
+  min-height: 100vh;
+  width: 25vw;
+  /* background-color:#17191c; */
+  background-image: linear-gradient(to bottom, #212529, #525458, #88898c, #c2c2c4, #ffffff);
+  margin-left: 0;
+  padding-left: 0;
+  margin-top: 5rem;
+}
+
+.sidebar-buttons {
+  padding-top: 8rem;
+  margin-left: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sidebar-buttons > h3 {
+  padding-bottom: 1rem;
+  color: white;
+}
+
+.home-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* margin-right: 23rem; */
+}
+
+.search-bar {
+  margin-top: 7.5rem;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding-left: 12rem;
+}
+
+.products-list {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.search-product-area {
+  padding-left: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding-bottom: 5rem;
+}
+
+.single-shoe {
+  width: 15vw;
+}
+
+/* styles for single product page */
+
+.single-product-image {
+  height: 70vh;
+  width: 35vw;
+}
+
+.product-body {
+  display: flex;
+  flex-direction: row;
+  margin-top: 8rem;
+  margin-left: 6rem;
+  margin-right: 4rem;
+}
+
+.single-information {
+  height: 80vh;
+  width: 40vw;
+  margin-left: 5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.single-information > h2, h3 {
+  margin-bottom: 1rem
+}
+
+.single-information > p {
+  line-height: 2rem;
+  font-size: 1.1rem;
+}
+
+.shoe-size {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.shoe-size > select {
+  width: 10vw;
+  margin-left: 1rem;
+}
+
+.single-information > button {
+  width: 10vw;
+}
+
+.related-products {
+  margin-top: 3rem;
+  margin-left: 6rem;
+  margin-right: 7rem;
+  margin-bottom: 4rem;
+}
+
+.related-product-cards {
+  margin-top: 2rem;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.related-single-product {
+  width: 16.5vw;
+}
+
+
+/* styles for cart */
+
+.cart-body {
+  display: flex;
+  flex-direction: row;
+  margin-left: 5rem;
+  margin-right: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
+}
+
+.cart-product {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid grey;
+  height: 24vh;
+  margin-top: 1rem;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cart-product > img {
+  width: 10vw;
+  height: 20vh;
+}
+
+.cart-product > input {
+  height: 5vh;
+  width: 5vw;
+  margin-top: 3rem;
+  margin-left: 2rem;
+}
+
+/* .cart-product > h5, h4 {
+  margin-top: 3rem;
+  margin-left: 2rem;
+} */  
+
+.cart-billing {
+  margin-left: 8rem;
+  width: 25vw;
+  background-color: #f9f9f9;
+  padding: 0.5rem 1.5rem;
+  height: 55vh;
+  margin-top: 2rem;
+  border: 1px solid lightgrey;
+}
+
+.subtotal, .total {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.subtotal, .total, .shipping-cost {
+  border-bottom: 1px solid lightgrey;
+  margin-bottom: 2rem;
+}
+
+.cart-title {
+  margin-left: 5.4rem;
+  margin-top: 8rem;
+  font-size: 2.5rem;
+}
+
+.cart-proceed-button {
+  margin-left: 5rem;
+  margin-top: 2rem;
+}
+
+
+/* styles for cart address page */
+
+.cart-address-product > img {
+  width: 7vw;
+}
+
+.cart-address-body {
+  display: flex;
+  flex-direction: row;
+  margin-left: 5rem;
+  margin-right: 5rem;
+  margin-top: 3rem;
+  margin-bottom: 4rem;
+}
+
+.cart-address-product {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid grey;
+  padding-bottom: 1rem;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cart-address-billing {
+  display: flex;
+  flex-direction: column;
+  margin-left: 4rem;
+}
+
+.cart-billing-address {
+  /* margin-left: 8rem; */
+  width: 30vw;
+  background-color: #f9f9f9;
+  padding: 0.5rem 1.5rem;
+  height: 55vh;
+  margin-top: 2rem;
+  border: 1px solid lightgrey;
+}
+
+.address-subtotal, .address-total {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.address-subtotal, .address-total, .address-shipping-cost {
+  border-bottom: 1px solid lightgrey;
+  margin-bottom: 2rem;
+}
+
+.cart-address-proceed-button {
+  margin-left: 7rem;
+  margin-top: 2rem;
+}
+
+
+#cart-address-title {
+  margin-left: 5rem;
+  margin-top: 8rem;
+}
+
+.cart-address-form-details {
+  /* border: 1px solid grey; */
+  width: 48vw;
+}
+
+.cart-address-form, .street-address {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.address-form-name {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.state-select {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.country {
+  font-size: 1.3rem;
+
+}
+
+.country-area {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.country-area > p {
+  font-size: 1.3rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* styles for order placed modal */
+
+.order-placed-modal > img {
+  width: 20vw;
+}
+
+.order-placed-modal {
+  text-align: center;
+  padding-top: 2rem;
+  padding-bottom: 1rem;
+}
+
+
+/* styles for profile page */
+
+.profile-body {
+  display: flex;
+  flex-direction: row;
+  margin-top: 8rem;
+  margin-left: 1rem;
+  margin-right: 4rem;
+}
+
+.profile-sidebar {
+  /* margin-top: -3rem; */
+  border-right: 1px solid grey;
+  padding-right: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding-left: 1rem;
+  margin-bottom: 10rem;
+  width: 17vw;
+}
+
+.profile-area {
+  margin-left: 3rem;
+  /* margin-top: 2rem; */
+  margin-bottom: 5rem;
+}
+
+.profile-area > h5 {
+  margin-left: 1rem;
+}
+
+.profile-area > h6 {
+  margin-top: -0.5rem;
+}
+
+
+/* styles for profile orders page */
+
+.order-body {
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.product-order {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid grey;
+  padding-bottom: 1rem;
+  width: 45vw;
+}
+
+.product-order > img {
+  width: 15vw;
+  height: 30vh;
+}
+
+.product-order-info > h3 {
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.product-order-info > h4 {
+  margin-top: 0.8rem;
+  margin-left: 2rem;
+}
+
+.shipping-info {
+  background-color: #f9f9f9;
+  border: 1px solid lightgray;
+  width: 22vw;
+  padding-left: 2.5rem;
+  padding-top: 1rem;
+  padding-bottom: 0.1rem;
+  margin-left: 2rem;
+}
+
+.shipping-info > h5 {
+  margin-bottom: 1rem;
+}
+
+.shipping-info > h5:nth-child(1) {
+  margin-top: 1.3rem;
+}
+
+.order-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+
+/* style for profile address page */
+
+.profile-address-page {
+  width: 60vw;
+  margin-left: 1rem;
+}
+
+
+/* style for profile account details page */
+
+.name {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  margin-top: 2rem;
+}
+
+.username-email {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  gap: 1rem;
+} 
+
+.password-change {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+}

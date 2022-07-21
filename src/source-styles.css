@@ -1,0 +1,650 @@
+/* ---------------------------styles for log in page---------------------------------- */
+
+a {
+    text-decoration: none;
+}
+
+
+.title {
+    color: white;
+    padding-left: 8.55rem;
+    letter-spacing: 2px;
+}
+
+.image {
+    height: 30rem;
+    width: 30rem;
+    background: url('/images/Hype\ Kicks.png');
+    margin-right: 0;
+    position: relative;
+    top: 15rem;
+    left: 8rem;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    height: 30rem;
+    width: 30rem;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: 46rem;
+    bottom: 15rem;
+    background-color: #21252921;
+    border-radius: 1rem;
+}
+
+.login-form > a > button {
+    width: 5rem;
+    margin-top: 1rem;
+}
+
+
+.login-form > form {
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+}
+
+.login-form > input {
+    margin-top: 1rem;
+}
+
+.another-login > p {
+    background-color: antiquewhite;
+}
+
+.another-login {
+    margin-top: -1rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.another-login > button {
+    margin-top: 1rem;
+    color: #ffffff;
+    background-color: #212529;
+}
+
+.another-login > h4 {
+    margin-right: 2rem;
+}
+
+.login-nav {
+    margin-bottom: -8rem;
+}
+
+.login-footer {
+    margin-top: -8rem;
+}
+
+/* ---------------------------styles for sign up page---------------------------------- */
+
+.sign-up-form {
+    background-color: #21252921;
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    margin-left: 20rem;
+    margin-right: 10rem;
+    width: 50vw;
+    padding-left: 2rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    text-align: center;
+    border-radius: 1rem;
+}
+
+.sign-up-form > button {
+    margin-right: 3rem;
+    width: 20vw;
+    margin-top: 2rem;
+    margin-bottom: 0;
+}
+
+.sign-up-form-group {
+    margin-top: 0;
+    margin-bottom: -2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#email-input {
+    margin-left: 3.9rem;
+}
+
+#password-input {
+    margin-left: 2rem;
+}
+
+.sign-up-form-group > input {
+    width: 30vw;
+    height: 7vh;
+    margin-left: 1rem;
+}
+
+
+
+.sign-up-form-group > label {
+    margin-bottom: 3rem;
+}
+
+
+/* -------------------------------Landing Page ---------------------------------------------*/
+
+.info-blocks {
+    width: 98vw;
+    height: 80vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    font-weight: bold;
+}
+
+.block {
+    width: 20vw;
+    height: 20vh;
+    text-align: center;
+}
+
+.block > i {
+    margin-bottom: 0;
+    margin-top: -3rem;
+}
+
+.review {
+    text-align: center;
+    width: 50vw;
+    height: 80vh;
+    margin-left: 21rem;
+}
+
+.review > h4 {
+    padding-top: 10rem;
+}
+
+.review > h5 {
+    padding-top: 1rem;
+}
+
+.navbar-nav {
+    margin-right: 3rem;
+}
+
+.navbar-nav > a {
+    margin-left: 1rem;
+}
+
+
+/* ---------------------------------products page---------------------------------------- */
+
+
+.sidebar {
+    min-height: 100vh;
+    width: 18vw;
+    /* background-color:#17191c; */
+    background-image: linear-gradient(to bottom, #212529, #525458, #88898c, #c2c2c4, #ffffff);
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.sidebar-buttons {
+    padding-top: 8rem;
+    margin-left: 1.4rem;
+}
+
+.sidebar-buttons > h3 {
+    padding-bottom: 1rem;
+    color: white;
+}
+
+.products-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.searchbar {
+    margin-left: 17rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center
+}
+
+.searchbar > button {
+    margin-left: 1rem;
+}
+
+.searchbar > form > input {
+    width: 30vw;
+}
+
+.product-card {
+height: 25vh;
+width: 15vw;
+margin-bottom: 2rem;
+} 
+
+ .product-image {
+    width: 100%;
+}
+
+.product-information > h5, h6 {
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+
+/* min height give as 100% */ 
+.products {
+    min-height: 100vh;  
+    margin-top: 3rem;
+    margin-left: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 3rem;
+}
+
+.card {
+    margin-bottom: 14rem;
+} 
+
+.card-text {
+    margin-left:-1rem;
+}
+
+
+/* --------------------------------------styles for single product page --------------------------------------*/
+
+
+
+.single-product-image {
+    height: 70vh;
+    width: 35vw;
+}
+
+.product-body {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3rem;
+    margin-left: 6rem;
+    margin-right: 4rem;
+}
+
+.single-information {
+    height: 80vh;
+    width: 40vw;
+    margin-left: 5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.single-information > h3, h5 {
+    margin-bottom: 2rem;
+}
+
+.single-information > p {
+    line-height: 2rem;
+}
+
+.shoe-size {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.shoe-size > select {
+    width: 10vw;
+    margin-left: 1rem;
+}
+
+.single-information > button {
+    width: 10vw;
+}
+
+.related-products {
+    margin-top: 3rem;
+    margin-left: 6rem;
+    margin-right: 7rem;
+    margin-bottom: 3rem;
+}
+
+.related-product-cards {
+    margin-top: 2rem;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+/* -----------------------------------------styles for cart page------------------------------------------ */
+
+.cart-body {
+    display: flex;
+    flex-direction: row;
+    margin-left: 3rem;
+    margin-right: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+.cart-product {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid grey;
+    height: 24vh;
+    margin-top: 1rem;
+}
+
+.cart-product > img {
+    width: 10vw;
+    height: 20vh;
+}
+
+.cart-product > input {
+    height: 5vh;
+    width: 5vw;
+    margin-top: 3rem;
+    margin-left: 2rem;
+}
+
+.cart-product > h5, h4 {
+    margin-top: 3rem;
+    margin-left: 2rem;
+}
+
+.cart-billing {
+    margin-left: 8rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #21252921;
+    border-radius: 1rem;
+    padding: 3rem 4rem 3rem 4rem;
+    height: 100%;
+}
+
+.cart-billing > button {
+    margin-top: 3rem;
+    margin-bottom: 0;
+}
+
+.subtotal, .total {
+    display: flex;
+    flex-direction: row;
+}
+
+.total {
+    margin-top: -3rem;
+    margin-left: -2rem;
+}
+
+#subtotal-price {
+    margin-left: 1rem;
+}
+
+.cart-title {
+    margin-left: 3.2rem;
+    margin-top: 3rem;
+}
+
+.cart-product-list {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+/* ------------------------------------styles for profile page---------------------------------- */
+
+
+.profile-body {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3rem;
+    margin-left: 1rem;
+    margin-right: 4rem;
+}
+
+.profile-area {
+    margin-left: 3rem;
+    margin-top: 2rem;
+}
+
+.profile-area > h5 {
+    margin-left: 1rem;
+}
+
+.profile-area > h6 {
+    margin-top: -0.5rem;
+}
+
+.profile-sidebar {
+    /* margin-top: -3rem; */
+    border-right: 1px solid grey;
+    padding-right: 3rem;
+    height: 100%;
+}
+
+.profile-sidebar > h4 {
+    margin-top: 2rem;
+}
+
+
+/* ------------------------------styles for account detail and some address form page----------------------------------- */
+
+.account-details-form, .address-form {
+    margin-left: 1rem;
+    margin-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    width: 60vw;
+}
+
+.name, .address-form-name {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.address-form-name {
+    margin-top: 1rem;
+}
+
+.name > input {
+    width: 20vw;
+}
+
+.address-form-name > input {
+    width: 20vw;
+}
+
+.username-email, .name {
+    margin-bottom: 2.5rem;
+}
+
+.account-details-form > button {
+    margin-top: 1rem;
+    width: 20vw;
+}
+
+
+/* -----------------------------------styles for addresses page ------------------------------------*/
+
+.country, .city, .state, .postcode, .phone {
+    margin-top: 1rem;
+}
+
+.street-address > input:nth-child(3) {
+    margin-top: 1rem;
+}
+
+.address-form > button {
+    margin-top: 2rem;
+    width: 20vw;
+}
+
+
+/* ----------------------------   styles for profile orders page ----------------------------------------*/
+
+.order-body {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.product-order {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid grey;
+    padding-bottom: 1rem;
+    width: 45vw;
+}
+
+.product-order > img {
+    width: 15vw;
+    height: 30vh;
+}
+
+.product-order-info > h5 {
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+.product-order-info > h4 {
+    margin-top: 0.8rem;
+}
+
+.shipping-info {
+    background-color: #21252921;
+    width: 25vw;
+    padding-left: 2.5rem;
+    padding-top: 1rem;
+    padding-bottom: 0.1rem;
+    border-radius: 1rem;
+    margin-left: 2rem;
+}
+
+.shipping-info > h5 {
+    margin-bottom: 1rem;
+}
+
+.shipping-info > h5:nth-child(1) {
+    margin-top: 1.3rem;
+}
+
+.order-list {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ---------------------------------styles for cart address page------------------------------ */
+
+.cart-address-product > img {
+    width: 7vw;
+}
+
+.cart-address-body {
+    display: flex;
+    flex-direction: row;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    margin-top: 3rem;
+    margin-bottom: 4rem;
+}
+
+.cart-address-product {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid grey;
+    padding-bottom: 1rem;
+    align-items: center;
+}
+
+.cart-address-product > h5 {
+    margin-left: 1rem;
+    margin-top: 2rem;
+} 
+
+.cart-address-subtotal , .cart-address-total {
+    display: flex;
+    flex-direction: row;
+}
+
+.cart-address-billing {
+    display: flex;
+    flex-direction: column;
+    margin-left: 4rem;
+}
+
+.cart-address-billing-details {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #21252921;
+    border-radius: 1rem;
+    padding: 3rem 4rem 3rem 4rem;
+}
+
+.cart-address-total {
+    margin-top: -3rem;
+    margin-bottom: 2rem;
+    margin-left: -2rem;
+}
+
+.cart-address-form-name > input {
+    width: 20vw;
+}
+
+.cart-address-form-name > label:nth-child(3) {
+    margin-left: 1rem;
+}
+
+#cart-address-title {
+    margin-left: 3.6rem;
+    margin-top: 3rem;
+}
+
+
+/* ----------------------styles for order placed page---------------------------- */
+
+.order-placed {
+    margin-top: 4rem;
+    margin-left: 20rem;
+    margin-bottom: 4rem;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.order-placed > img {
+    width: 20vw;
+    margin-bottom: 1rem;
+}
+
+.order-placed > h3 {
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+
+.order-placed > button {
+    margin-top: 1rem;
+}
+
+.order-success-bold {
+    border-bottom: 5px solid grey;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.order-success-bold > h1 {
+  font-weight: bold;
+}
