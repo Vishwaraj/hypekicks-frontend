@@ -2,10 +2,15 @@ import Button from '@mui/material/Button';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import { useContext, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import {API} from './global'
 
 
-export function ProductBody() {
+export function ProductBody({singleProduct}) {
+
+  const [size, setSize] = useState(0);
+
 
   const shoeSizeSelect = {
     width: '8vw',
@@ -14,23 +19,47 @@ export function ProductBody() {
     marginBottom: '2rem',
   };
 
+  const addToCart = async () => {
+
+     const productSent = {...singleProduct, size: size, quantity: 1}
+
+     fetch(`${API}/home/single-product/${singleProduct._id}`, {
+      method: "POST",
+      body: JSON.stringify(productSent),
+      headers: {
+        "Content-type": "application/json"
+      }
+     } )
+     .then((result) => {
+      result.json()
+    })
+     .then(data => {
+      console.log(data)
+    })
+    .then(()=>navigate('/cart'))
+     .catch(error => {
+      console.log(error)
+    })
+  }
+  
+
   const navigate = useNavigate();
+
+  const handleSizeChange = (e) => {
+   
+   setSize(e.target.value);
+  
+  }
+  
 
   return (
     <div className="product-body">
-      <img className="single-product-image" src="https://superkicks.in/wp-content/uploads/2022/04/1-2-44-850x816.jpg" alt="" />
+      <img className="single-product-image" src={singleProduct.image} alt="" />
 
       <div className="single-information">
-        <h2>NIKE Air More Tempo '96 Iron Grey</h2>
-        <h3>₹15,995</h3>
-        <p> The Nike Air More Uptempo ’96 brings classic basketball back to the streets.
-          A collage of the beloved Swoosh logo alongside visible Max Air cushioning equates to an of-era.
-          Chunky design for a look that will never fade.
-
-          Elastic straps over the tongue keep your style sharp, whether you rock them laced or unlaced.
-          Originally designed for performance hoops, the Max Air units add lightweight, durable cushioning.
-          Synthetic leather underlays add dimension beneath the iconic “AIR” lettering.
-          Round laces match the 2 round pull tabs for added style points while making it easy to lace up and take on and off.</p>
+        <h2>{singleProduct.name}</h2>
+        <h3>₹{singleProduct.price}</h3>
+        <p>{singleProduct.description}</p>
         <div className="shoe-size">
 
           <InputLabel>Shoe Size (UK)</InputLabel>
@@ -38,6 +67,9 @@ export function ProductBody() {
             labelId="test-select-label"
             label="Shoe Size"
             style={shoeSizeSelect}
+            onChange={(e)=> handleSizeChange(e)}
+            value={size}
+            required={true}
           >
             <MenuItem value={10}>10</MenuItem>
             <MenuItem value={9}>9</MenuItem>
@@ -45,7 +77,10 @@ export function ProductBody() {
             <MenuItem value={7}>7</MenuItem>
           </Select>
         </div>
-        <Button variant="outlined" color='inherit' onClick={() => navigate('/cart')}>Add to Cart</Button>
+        <Button disabled={size ? false : true} variant="outlined" color='inherit' onClick={() => {
+        addToCart()
+        }
+        }>Add to Cart</Button>
       </div>
     </div>
   );

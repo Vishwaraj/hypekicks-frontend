@@ -3,24 +3,56 @@ import TextField from '@mui/material/TextField';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useParams } from "react-router-dom";
+import { useState } from 'react';
 
 
-export function SideBar() {
+export function SideBar({handleClick, setClicked, clicked}) {
 
+
+  
   const textColor = {
     color: 'white',
     fontSize: '1.5rem'
   };
+
+  const navigate = useNavigate();
+
+  const {category} = useParams()
+
+  
 
   return (
 
     <div className="sidebar">
       <div className="sidebar-buttons">
 
-        <Button style={textColor} variant="text" color='inherit'>New Releases</Button>
-        <Button style={textColor} variant="text" color='inherit'>Popular</Button>
-        <Button style={textColor} variant="text" color='inherit'>Trending</Button>
+      <Button style={textColor}   variant="text" onClick={(event) => {handleClick(event); setClicked(!clicked)}} value={'new-releases'} color='inherit'
+       disabled={category === 'new-releases' ? true : false}
+      >New Releases</Button>
+
+       
+
+        
+        
+        
+        <Button style={textColor}  variant="text" onClick={(event)=>{handleClick(event); }} value={'popular'} color='inherit'
+        disabled={category === 'popular' ? true : false}
+        >Popular</Button>
+
+
+       
+        <Button style={textColor}  variant="text" onClick={(event)=>{handleClick(event); }} value={'trending'} color='inherit'
+        disabled={category === 'trending' ? true : false}
+        >Trending</Button>
+
+        <Button style={textColor}  variant="text" onClick={(event)=>{handleClick(event); }} value={'all'} color='inherit'
+        disabled={category === 'all' ? true : false}
+        >All</Button>
+
+       {/* <Button style={textColor}  variant="text" onClick={()=>navigate('/home')} value={'all'} color='inherit'
+        disabled={category === 'all' ? true : false}
+        >All</Button> */}
 
       </div>
     </div>
@@ -42,38 +74,50 @@ export function SearchBar() {
     </div>
   );
 }
-function SingleProduct() {
+function SingleProduct({sneaker}) {
 
   const navigate = useNavigate();
 
   const cursorStyle = {
-    cursor: 'pointer'
+    cursor: 'pointer',
+    marginTop: 0,
+    marginBottom: 0,
   }
+
+  
 
   return (
     <div className='single-shoe'>
       <Card>
         <CardMedia
           component="img"
-          height="200"
-          image='https://superkicks.in/wp-content/uploads/2022/04/2-100-850x816.jpg' alt='nike-shoes' />
+          height="250"
+          image={sneaker.image} alt='nike-shoes' 
+          style={{objectFit: "contain"}}
+          />
         <CardContent>
-          <h4 style={cursorStyle} onClick={() => navigate('/home/single-product')}>NIKE Air More Tempo '96 Iron Grey</h4>
-          <h5>₹15,995</h5>
+          <h4 style={cursorStyle} onClick={() => {navigate('/home/single-product/'+sneaker._id);}}>{sneaker.name}</h4>
+          <h5 style={{marginBottom: 0}}>Rs {sneaker.price}</h5>
         </CardContent>
       </Card>
     </div>
   );
 }
-export function ProductsList() {
+export function ProductsList({homeProducts}) {
+
+ 
+
   return (
     <div className='products-list'>
+    { homeProducts.map((sneaker)=> {
+    return <SingleProduct key={sneaker._id} sneaker={sneaker} />
+  })}
+      
+      {/* <SingleProduct />
       <SingleProduct />
       <SingleProduct />
       <SingleProduct />
-      <SingleProduct />
-      <SingleProduct />
-      <SingleProduct />
+      <SingleProduct /> */}
     </div>
   );
 }

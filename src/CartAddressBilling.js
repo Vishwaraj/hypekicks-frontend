@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import Button from '@mui/material/Button';
-import {useState} from 'react';
+import {useContext, useState} from 'react';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import fireworks from './images/fireworks.png';
+import { globalContext } from "./App";
 
 
 
@@ -16,15 +17,16 @@ export function CartAddressBilling() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const {cart} = useContext(globalContext)
 
-
+  const total = cart.reduce((total, currentVal)=> total += currentVal.price*currentVal.quantity, 0);
 
   return (
     <div>
     <div className="cart-billing-address">
       <div className="address-subtotal">
         <h3>Subtotal :</h3>
-        <h3 id="address-subtotal-price">₹15,995</h3>
+        <h3 id="address-subtotal-price">₹{total}</h3>
       </div>
 
       <div className='address-shipping-cost'>
@@ -35,7 +37,7 @@ export function CartAddressBilling() {
 
       <div className="address-total">
         <h3>Total :</h3>
-        <h3>₹15,995</h3>
+        <h3>₹{total}</h3>
       </div>
       {/* <button class="btn btn-dark"><a href="cart-address.html">Proceed to Checkout</a></button> */}
       <div className='cart-address-proceed-button'>

@@ -1,10 +1,30 @@
-export function CartAddressProduct() {
+import { useContext } from 'react';
+import {globalContext} from './App'
+
+
+export function CartAddressProductList() {
+
+  const {cart} = useContext(globalContext);
+
+ 
+  return (
+    <>
+    {cart.map((sneaker) => {
+      return <CartAddressProduct sneaker={sneaker}/>
+    })}
+    </>
+  )
+
+}
+
+
+export function CartAddressProduct({sneaker}) {
   return (
     <div className="cart-address-product">
-      <img src="https://superkicks.in/wp-content/uploads/2022/04/1-2-44-850x816.jpg" alt="" />
-      <h3>NIKE Air More Tempo '96 Iron Grey</h3>
-      <h4>Quantity : 1</h4>
-      <h4>₹15,995</h4>
+      <img src={sneaker.image} alt="" />
+      <h3>{sneaker.name}</h3>
+      <h4>Quantity : {sneaker.quantity}</h4>
+      <h4>₹{sneaker.price * sneaker.quantity}</h4>
     </div>
   );
 }

@@ -2,6 +2,10 @@ import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
+import { useContext, useEffect } from 'react';
+import { globalContext } from './App';
+import { API } from './global';
+
 
 export function BillingAddress() {
 
@@ -14,6 +18,13 @@ export function BillingAddress() {
     width: '23vw'
   };
 
+  // useEffect(()=> {
+  //  fetch(`${API}/cart/billing-details`)
+
+  // }, [])
+
+  const {user} = useContext(globalContext);
+  console.log(user);
 
   return (
     <div className="cart-address-form-details">

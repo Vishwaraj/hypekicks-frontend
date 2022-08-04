@@ -3,7 +3,7 @@ import './App.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Icon from '@mui/material/Icon';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
-import { Routes, Route} from "react-router-dom";
+import { Routes, Route, useParams} from "react-router-dom";
 import { Header } from './Header';
 import { ImageCarousel } from './ImageCarousel';
 import { Services } from './Services';
@@ -15,8 +15,6 @@ import { SignUpForm } from './SignUpForm';
 import { grey } from '@mui/material/colors';
 import { SideBar, SearchBar, ProductsList } from './SideBar';
 import { SelectChangeEvent } from '@mui/material/Select';
-import { ProductBody } from './ProductBody';
-import { RelatedProducts } from './RelatedProducts';
 import { CartProductList } from './CartProductList';
 import { CartBilling } from './CartBilling';
 import { CartAddressBilling } from './CartAddressBilling';
@@ -28,23 +26,41 @@ import { ProfileDashboard } from './ProfileDashboard';
 import { OrderList } from './OrderList';
 import { ProfileAddressForm } from './ProfileAddressForm';
 import { TextField } from '@mui/material';
+import { useEffect, useState, createContext, useContext,  } from 'react';
+import {API} from './global'
+import { SingleProductPage } from './SingleProductPage';
+import {CartAddressProductList} from './CartAddressProduct'
 
 
 
 
-
-
+export const globalContext = createContext()
 
 function App() {
+
+  //cart context here
+
+ const [cart, setCart] = useState([]);
+//  const [userAddress, setUserAddress] = useState({})
+const [user, setUser] = useState({})
+
+
   return (
-    <div>
+    <>
+    
+  <div>
+  {/* wrap it here */}
+  <globalContext.Provider value={{cart, setCart, user, setUser}}>
+
+ 
      <Header />
      <Routes>
       <Route path='/' element={<LandingPage />}/>
       <Route path='/login' element={<LoginPage />}/>
       <Route path='/signup' element={<SignUpPage />}/>
       <Route path='/home' element={<HomePage />}/>
-      <Route path='/home/single-product' element={<SingleProductPage />}/>
+      <Route path='/home/:category' element={<HomePage />}/>
+      <Route path='/home/single-product/:productID' element={<SingleProductPage />}/>
       <Route path='/cart' element={<CartPage />}/>
       <Route path='/cart/billing-details' element={<BillingDetailsPage />}/>
       <Route path='/profile-page' element={<ProfilePage />}/>
@@ -54,7 +70,12 @@ function App() {
      </Routes>
      
      <Footer />
+     
+  </globalContext.Provider>
+     {/* Till here */}
     </div>
+    </>
+  
   );
 }
 
@@ -94,43 +115,96 @@ function SignUpPage() {
 }
 
 
+
 function HomePage() {
+
+  const {category} = useParams()
+  
+
+  const [homeProducts, setHomeProducts] = useState([]);
+
+  const getProducts = async () => {
+    fetch(`${API}/home`)
+    .then(result => result.json())
+    .then(data => {setHomeProducts(data)});
+  }
+
+  useEffect(()=> {
+  getProducts()
+  }, [])
+
+  const navigate = useNavigate();
+
+  const getSpecificProducts = async (type) => {
+    fetch(`${API}/home/${type}`)
+    .then(result => result.json())
+    .then(data => {console.log(data); setHomeProducts(data)})
+    .then(() => navigate('/home/'+type))
+    
+  }
+
+  const [clicked, setClicked] = useState(false);
+
+  const handleClick = async (event) => {
+    let type = event.currentTarget.value;
+    getSpecificProducts(type);
+  
+  }
+  
+
+
+
   return (
     <div className='home-page'>
-    <SideBar />
+    <SideBar handleClick={handleClick} clicked={clicked} setClicked={setClicked} />
     <div className='search-product-area'>
     <SearchBar />
-    <ProductsList />
+    <ProductsList homeProducts={homeProducts} />
     </div>
     </div>
   );
 }
 
-
-function SingleProductPage() {
-  return (
-    <div>
-    <ProductBody />
-    <div className='related-products'>
-    <h1>Related Products</h1>
-    <div className='related-product-cards'>
-    <RelatedProducts />
-    <RelatedProducts />
-    <RelatedProducts />
-    <RelatedProducts />
-    </div>
-    </div>
-    </div>  
-  );
-}
 
 function CartPage() {
+
+  const {cart, setCart} = useContext(globalContext);
+
+
+
+  const fetchCart = () => {
+    try {
+      fetch(`${API}/cart`)
+      .then((result) => result.json())
+      .then(data => {
+        setCart(data);
+      })
+     } catch (error) {
+        console.log(error)
+     }
+  }
+
+  useEffect(() => {
+    fetchCart();
+    }, [])
+
+
+    let sum;
+    cart.forEach((product) => {
+      sum += product.price * product.quantity
+    })
+  
+    const [total, setTotal] = useState(sum);
+    
+  
+
   return (
     <div>
     <h1 className="cart-title">Cart</h1>
     <div className='cart-body'>
-    <CartProductList />
-    <CartBilling />
+    {cart.length === 0 ? <h1 style={{marginRight: "36rem"}}>Cart is empty</h1> : <CartProductList fetchCart={fetchCart} setTotal={setTotal} />}
+    
+    <CartBilling total={total} setTotal={setTotal} />
     </div>
     </div>
   );
@@ -138,13 +212,19 @@ function CartPage() {
 
 
 function BillingDetailsPage() {
+
+  const {cart} = useContext(globalContext);
+  console.log(cart);
+
   return (
     <div>
    <h1 id="cart-address-title">Billing Details</h1> 
    <div className='cart-address-body'>
    <BillingAddress />
    <div className="cart-address-billing">
-   <CartAddressProduct />
+
+   <CartAddressProductList />
+   
    <CartAddressBilling />
    </div>
     </div>
