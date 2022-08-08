@@ -48,7 +48,10 @@ export function LoginForm() {
       }
     })
     .then(result => result.json())
-    .then(data => {console.log('this is the login user', data); setUser(data.user)}) //saving the user to state
+    .then(data => {console.log('this is the login user', data); setUser(data.user)
+     window.localStorage.setItem('token', data.token);
+     window.localStorage.setItem('user', data.user.username)
+     }) //saving the user to state
     .then(navigate('/home'))
   }
 

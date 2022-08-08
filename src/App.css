@@ -450,8 +450,8 @@
 
 .order-placed-modal {
   text-align: center;
-  padding-top: 2rem;
-  padding-bottom: 1rem;
+  padding-top: 11rem;
+  padding-bottom: 5rem;
 }
 
 
@@ -514,6 +514,7 @@
 .product-order > img {
   width: 15vw;
   height: 30vh;
+  object-fit: cover;
 }
 
 .product-order-info > h3 {

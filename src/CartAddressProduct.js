@@ -1,11 +1,14 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import {globalContext} from './App'
 
 
 export function CartAddressProductList() {
 
-  const {cart} = useContext(globalContext);
+  const {cart, fetchCart} = useContext(globalContext);
 
+  useEffect(()=>{
+    fetchCart()
+  }, [])
  
   return (
     <>

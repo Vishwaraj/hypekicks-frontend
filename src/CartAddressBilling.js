@@ -7,6 +7,7 @@ import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import fireworks from './images/fireworks.png';
 import { globalContext } from "./App";
+import { API } from "./global";
 
 
 
@@ -20,6 +21,27 @@ export function CartAddressBilling() {
   const {cart} = useContext(globalContext)
 
   const total = cart.reduce((total, currentVal)=> total += currentVal.price*currentVal.quantity, 0);
+
+  const username = window.localStorage.getItem('user')
+
+  const handleClick = () => {
+    fetch(`${API}/create-checkout-session`, {
+      method: 'POST',
+      body: JSON.stringify({username: username}),
+      headers: {
+        "Content-type": "application/json"
+      }
+    })
+    .then(result => result.json())
+    .then(data => {
+      console.log(data)
+      if(data.stripeUrl) {
+        window.location.href = data.stripeUrl
+      }
+    })
+    .catch(error=> console.log(error))
+  }
+
 
   return (
     <div>
@@ -41,7 +63,8 @@ export function CartAddressBilling() {
       </div>
       {/* <button class="btn btn-dark"><a href="cart-address.html">Proceed to Checkout</a></button> */}
       <div className='cart-address-proceed-button'>
-        <Button onClick={() => {handleOpen(); console.log(open)}} variant="outlined" color='inherit'>Proceed to Checkout</Button>
+        {/* <Button onClick={() => {handleOpen(); console.log(open)}} variant="outlined" color='inherit'>Proceed to Checkout</Button> */}
+        <Button onClick={() => {handleClick()}} variant="outlined" color='inherit'>Proceed to Checkout</Button>
       </div>
 
     </div>
