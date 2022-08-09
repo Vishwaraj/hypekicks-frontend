@@ -23,13 +23,15 @@ export function CartAddressBilling() {
   const total = cart.reduce((total, currentVal)=> total += currentVal.price*currentVal.quantity, 0);
 
   const username = window.localStorage.getItem('user')
+  const token = window.localStorage.getItem('token');
 
   const handleClick = () => {
     fetch(`${API}/create-checkout-session`, {
       method: 'POST',
       body: JSON.stringify({username: username}),
       headers: {
-        "Content-type": "application/json"
+        "Content-type": "application/json",
+        "auth-token": token
       }
     })
     .then(result => result.json())

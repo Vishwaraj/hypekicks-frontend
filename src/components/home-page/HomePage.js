@@ -10,9 +10,15 @@ export function HomePage() {
   const [homeProducts, setHomeProducts] = useState([]);
   const [searchedProducts, setSearchedProducts] = useState(null);
 
+  const token = window.localStorage.getItem('token');
 
   const getProducts = async () => {
-    fetch(`${API}/home`)
+    fetch(`${API}/home`, {
+      headers: {
+        "Content-type": "application/json",
+        "auth-token": token 
+      }
+    })
       .then((result) => result.json())
       .then((data) => {
         setHomeProducts(data);
@@ -27,7 +33,12 @@ export function HomePage() {
   const navigate = useNavigate();
 
   const getSpecificProducts = async (type) => {
-    fetch(`${API}/home/${type}`)
+    fetch(`${API}/home/${type}`, {
+      headers: {
+        "Content-type": "application/json",
+        "auth-token": token 
+      }
+    })
       .then((result) => result.json())
       .then((data) => {
         console.log(data);
@@ -59,7 +70,7 @@ export function HomePage() {
     setSearchTerm('');
   };
 
-
+ 
   return (
     <div className="home-page">
       <SideBar

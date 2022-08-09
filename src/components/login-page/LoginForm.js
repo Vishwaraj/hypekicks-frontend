@@ -52,7 +52,11 @@ export function LoginForm() {
      window.localStorage.setItem('token', data.token);
      window.localStorage.setItem('user', data.user.username)
      }) //saving the user to state
-    .then(navigate('/home'))
+    
+    setTimeout(() => {
+    navigate('/home')
+    }, 2000)
+    
   }
 
 

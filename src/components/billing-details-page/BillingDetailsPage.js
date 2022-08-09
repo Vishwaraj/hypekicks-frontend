@@ -1,5 +1,5 @@
 import { CartAddressBilling } from "./CartAddressBilling";
-import { BillingAddress } from "../../BillingAddress";
+import { BillingAddress } from "./BillingAddress";
 import { useEffect, useState, useContext } from "react";
 import { API } from "../../global";
 import { CartAddressProductList } from "./CartAddressProduct";
@@ -9,6 +9,7 @@ export function BillingDetailsPage() {
   const { cart } = useContext(globalContext);
 
   const username = window.localStorage.getItem("user");
+  const token = window.localStorage.getItem('token');
 
   const [form, setForm] = useState(null);
 
@@ -18,6 +19,7 @@ export function BillingDetailsPage() {
       body: JSON.stringify({ username }),
       headers: {
         "Content-type": "application/json",
+        "auth-token": token
       },
     })
       .then((result) => result.json())

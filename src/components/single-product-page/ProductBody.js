@@ -22,14 +22,16 @@ export function ProductBody({singleProduct}) {
   const addToCart = async () => {
 
      const user = window.localStorage.getItem('user');
-
+     const token = window.localStorage.getItem('token');
+     
      const productSent = {...singleProduct, size: size, quantity: 1, user: user}
 
      fetch(`${API}/home/single-product/${singleProduct._id}`, {
       method: "POST",
       body: JSON.stringify(productSent),
       headers: {
-        "Content-type": "application/json"
+        "Content-type": "application/json",
+        "auth-token": token
       }
      } )
      .then((result) => {

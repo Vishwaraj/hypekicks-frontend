@@ -8,13 +8,15 @@ export function OrderList() {
   const [productsArr, setProductsArr] = useState([]);
 
   const user = window.localStorage.getItem('user');
+  const token = window.localStorage.getItem('token');
 
   const getOrders = () => {
     fetch(`${API}/profile-page/orders`, {
       method: 'POST',
       body: JSON.stringify({user: user}),
       headers: {
-        "Content-type": "application/json"
+        "Content-type": "application/json",
+        "auth-token": token
       }
     })
     .then(result=> result.json())

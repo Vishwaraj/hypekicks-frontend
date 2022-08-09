@@ -12,8 +12,16 @@ export function SingleProductPage() {
 
   console.log(productID);
 
+
+  const token = window.localStorage.getItem('token');
+
   const getSingleProduct = () => {
-    fetch(`${API}/home/single-product/${productID}`)
+    fetch(`${API}/home/single-product/${productID}`, {
+      headers: {
+        "Content-type": "application/json",
+        "auth-token": token
+      }
+    })
       .then(result => result.json())
       .then(data => { console.log(data); setSingleProduct(data.result); });
   };
@@ -21,7 +29,12 @@ export function SingleProductPage() {
   const [relatedProducts, setRelatedProduct] = useState([]);
 
   const getRelatedProduct = () => {
-    fetch(`${API}/home/single-product/${productID}`)
+    fetch(`${API}/home/single-product/${productID}`, {
+      headers: {
+        "Content-type": "application/json",
+        "auth-token": token
+      }
+    })
       .then(result => result.json())
       .then(data => { console.log(data.relatedProducts); setRelatedProduct(data.relatedProducts); });
   };

@@ -3,8 +3,8 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import { useContext, useEffect, useState } from 'react';
-import { globalContext } from './App';
-import { API } from './global';
+import { globalContext } from '../../App';
+import { API } from '../../global';
 import {useFormik} from 'formik';
 import * as yup from 'yup';
 import { Button } from '@mui/material';
@@ -59,6 +59,7 @@ export function BillingAddress({form}) {
     }
   })
 
+  const token = window.localStorage.getItem('token');
 
   const updateAddress = (address) => {
 
@@ -69,7 +70,8 @@ export function BillingAddress({form}) {
         body: JSON.stringify(address),
         headers: {
           "Content-type": "application/json",
-          username: username
+          username: username,
+          "auth-token": token
         }
       })
       .then(result=> result.json())

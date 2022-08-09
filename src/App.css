@@ -11,6 +11,10 @@
   margin-top: 1rem;
 }
 
+.title:hover {
+  cursor: pointer;
+}
+
 .header-buttons {
   display: flex;
   flex-direction: row;

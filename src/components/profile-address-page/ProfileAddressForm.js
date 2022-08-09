@@ -65,7 +65,9 @@ export function ProfileAddressForm() {
   })
 
   //getting the user name from context -
-  const {user} = useContext(globalContext)
+
+  const user = window.localStorage.getItem('user');
+  const token = window.localStorage.getItem('token');
 
   const addUserAddress = (address, user) => {
 
@@ -74,7 +76,8 @@ export function ProfileAddressForm() {
       body: JSON.stringify(address),
       headers: {
         "Content-type": "application/json",
-        username: user.username
+        username: user,
+        "auth-token": token
       }
     }) 
     .then(result => result.json())

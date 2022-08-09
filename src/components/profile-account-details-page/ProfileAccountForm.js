@@ -24,7 +24,7 @@ export function ProfileAccountForm({initialForm}) {
   };
 
   const user = window.localStorage.getItem('user');
-
+  const token = window.localStorage.getItem('token');
 
   const {handleChange, handleBlur, handleSubmit, values, errors, touched} = useFormik({
     initialValues: {
@@ -47,7 +47,8 @@ export function ProfileAccountForm({initialForm}) {
       method: 'PUT',
       body: JSON.stringify({update: update, user: user}),
       headers: {
-        "Content-type": "application/json"
+        "Content-type": "application/json",
+        "auth-token": token
       }
      })
      .then(result => result.json())

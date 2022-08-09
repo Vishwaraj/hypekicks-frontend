@@ -70,7 +70,7 @@ export function SearchBar({setSearchTerm, searchTerm, handleSearch}) {
   return (
     <div>
       <form className='search-bar'>
-        <TextField value={searchTerm} onChange={(e)=>setSearchTerm(e.target.value)} type='text' id="outlined-basic" variant="outlined" />
+        <TextField style={{width: "30rem"}} value={searchTerm} onChange={(e)=>setSearchTerm(e.target.value)} type='text' id="outlined-basic" variant="outlined" />
 
         <Button onClick={(event)=>handleSearch(event,searchTerm)} type='submit' variant="outlined" color='inherit'>Search</Button>
       </form>

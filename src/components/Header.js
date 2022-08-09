@@ -4,13 +4,17 @@ import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
 import { globalContext } from '../App';
 import { useContext } from 'react';
-import { Badge } from '@mui/material';
+import { Badge, IconButton } from '@mui/material';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import HomeIcon from '@mui/icons-material/Home';
 
 
 // --------------------header component------------------------
 export function Header() {
 
 const {cart} = useContext(globalContext);
+const token = window.localStorage.getItem('token');
 
   const appBarStyles = {
     backgroundColor: '#212529',
@@ -23,20 +27,37 @@ const {cart} = useContext(globalContext);
 
   return (
     <AppBar style={appBarStyles}>
-      <h1 className='title'>HYPE KICKS</h1>
+      <h1 onClick={()=>{navigate('/')}} className='title'>HYPE KICKS</h1>
 
       <Toolbar>
         <div className='header-buttons'>
-        
-        <Button variant="text" color='inherit' onClick={() => navigate('/')}>Home</Button>
-        <Button variant="text" color='inherit' onClick={() => navigate('/login')}>Log in</Button>
-        <Button variant="text" color='inherit' onClick={() => navigate('/signup')}>Sign up</Button>
-        
+
+
+        {token ? <>
+
+          <IconButton color='inherit' onClick={() => navigate('/home')}>
+          <HomeIcon fontSize="large" />
+        </IconButton>
+                
+        <IconButton color='inherit' onClick={() => navigate('/cart')} aria-label="Example">
         <Badge badgeContent={cart.length} color="primary">
-        <Button variant="text" color='inherit' onClick={() => navigate('/cart')}>Cart</Button>
+        <ShoppingCartIcon fontSize="large" />
         </Badge>
+        </IconButton>
+        
+        
+        <IconButton color='inherit' onClick={() => navigate('/profile-page')}>
+          <AccountCircleIcon fontSize="large" />
+        </IconButton>
+
+        </>  
+        
+        : <><Button variant="text" color='inherit' onClick={() => navigate('/login')}>Log in</Button>
+        <Button variant="text" color='inherit' onClick={() => navigate('/signup')}>Sign up</Button></> 
+        }
+      
+        
        
-        <Button variant="text" color='inherit' onClick={() => navigate('/profile-page')}>Profile</Button>
         </div>
       </Toolbar>
     </AppBar>

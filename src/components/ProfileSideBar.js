@@ -12,6 +12,13 @@ export function ProfileSideBar() {
     fontSize: "1.3rem",
   };
 
+  const handleLogout = () => {
+    window.localStorage.removeItem('token');
+    window.localStorage.removeItem('user');
+    navigate('/')
+  }
+
+
   return (
     <div class="profile-sidebar">
       {/* <h4><a href="profile.html">Dashboard</a></h4> */}
@@ -55,7 +62,7 @@ export function ProfileSideBar() {
       </Button>
 
       {/* <h4>Log out</h4> */}
-      <Button style={sideBarButton} variant="text" color="inherit">
+      <Button style={sideBarButton} onClick={()=> {handleLogout()}} variant="text" color="inherit">
         Log out
       </Button>
     </div>

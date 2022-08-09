@@ -39,13 +39,15 @@ function App() {
   const fetchCart = () => {
 
     const user = window.localStorage.getItem('user');
+    const token = window.localStorage.getItem('token');
 
     try {
       fetch(`${API}/cart`, {
         method: 'POST',
         body: JSON.stringify({user: user}),
         headers: {
-          "Content-type": "application/json"
+          "Content-type": "application/json",
+          "auth-token": token
         }
       })
         .then((result) => result.json())
@@ -61,12 +63,14 @@ function App() {
   //function to add orders
   const addOrders = () => {
     const username = window.localStorage.getItem("user");
+    const token = window.localStorage.getItem('token');
 
     fetch(`${API}/cart/order-success`, {
       method: "POST",
       body: JSON.stringify({ username: username }),
       headers: {
         "Content-type": "application/json",
+        "auth-token": token
       },
     })
       .then((result) => result.json())
