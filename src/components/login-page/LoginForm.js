@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { grey } from '@mui/material/colors';
 import { useFormik } from "formik";
 import * as yup from 'yup';
-import {API} from './global';
+import {API} from '../../global';
 import { useContext } from 'react';
-import { globalContext } from './App';
+import { globalContext } from '../../App';
 
 
 const userValidationSchema = yup.object({

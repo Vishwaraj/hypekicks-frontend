@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { globalContext } from "./App";
+import { globalContext } from "../../App";
 
 
 export function ProfileDashboard() {

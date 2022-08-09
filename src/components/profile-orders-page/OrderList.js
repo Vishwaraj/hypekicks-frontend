@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import {API} from './global';
-import "./App.css";
+import {API} from '../../global';
+import "../../App.css";
 
 export function OrderList() {
 

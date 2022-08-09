@@ -5,9 +5,9 @@ import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
-import fireworks from './images/fireworks.png';
-import { globalContext } from "./App";
-import { API } from "./global";
+import fireworks from '../../images/fireworks.png';
+import { globalContext } from "../../App";
+import { API } from "../../global";
 
 
 

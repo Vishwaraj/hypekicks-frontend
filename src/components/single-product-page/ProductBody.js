@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import { useContext, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import {API} from './global'
+import {API} from '../../global'
 
 
 export function ProductBody({singleProduct}) {
@@ -21,7 +21,9 @@ export function ProductBody({singleProduct}) {
 
   const addToCart = async () => {
 
-     const productSent = {...singleProduct, size: size, quantity: 1}
+     const user = window.localStorage.getItem('user');
+
+     const productSent = {...singleProduct, size: size, quantity: 1, user: user}
 
      fetch(`${API}/home/single-product/${singleProduct._id}`, {
       method: "POST",

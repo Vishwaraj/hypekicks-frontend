@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import {globalContext} from './App'
+import {globalContext} from '../../App'
 
 
 export function CartAddressProductList() {

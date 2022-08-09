@@ -2,7 +2,7 @@ import Button from "@mui/material/Button";
 import { TextField } from "@mui/material";
 import {useFormik} from 'formik';
 import * as yup from 'yup';
-import {API} from './global';
+import {API} from '../../global';
 import { useEffect, useState } from "react";
 
 

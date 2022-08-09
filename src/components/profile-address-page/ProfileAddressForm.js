@@ -5,9 +5,9 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import {useFormik} from 'formik';
 import * as yup from 'yup';
-import { globalContext } from './App';
+import { globalContext } from '../../App';
 import { useContext } from 'react';
-import {API} from './global';
+import {API} from '../../global';
 
 
 const addressValidationSchema = yup.object({

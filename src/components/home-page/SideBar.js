@@ -9,8 +9,6 @@ import { useState } from 'react';
 
 export function SideBar({handleClick, setClicked, clicked}) {
 
-
-  
   const textColor = {
     color: 'white',
     fontSize: '1.5rem'
@@ -58,18 +56,23 @@ export function SideBar({handleClick, setClicked, clicked}) {
     </div>
   );
 }
-export function SearchBar() {
+export function SearchBar({setSearchTerm, searchTerm, handleSearch}) {
+
+ 
 
   const searchBar = {
     width: '30vw',
   };
 
+
+
+
   return (
     <div>
       <form className='search-bar'>
-        <TextField style={searchBar} id="outlined-basic" variant="outlined" />
+        <TextField value={searchTerm} onChange={(e)=>setSearchTerm(e.target.value)} type='text' id="outlined-basic" variant="outlined" />
 
-        <Button variant="outlined" color='inherit'>Search</Button>
+        <Button onClick={(event)=>handleSearch(event,searchTerm)} type='submit' variant="outlined" color='inherit'>Search</Button>
       </form>
     </div>
   );
@@ -103,21 +106,26 @@ function SingleProduct({sneaker}) {
     </div>
   );
 }
-export function ProductsList({homeProducts}) {
+export function ProductsList({homeProducts, searchedProducts}) {
 
  
 
   return (
     <div className='products-list'>
-    { homeProducts.map((sneaker)=> {
+    { 
+      searchedProducts ? 
+     
+      searchedProducts.map((sneaker)=> {
     return <SingleProduct key={sneaker._id} sneaker={sneaker} />
-  })}
-      
-      {/* <SingleProduct />
-      <SingleProduct />
-      <SingleProduct />
-      <SingleProduct />
-      <SingleProduct /> */}
+  })
+
+       : homeProducts.map((sneaker)=> {
+    return <SingleProduct key={sneaker._id} sneaker={sneaker} />
+  })
+
+  
+  }
+
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { globalContext } from './App';
+import { globalContext } from '../../App';
 
 
 export function CartBilling({total, setTotal}) {

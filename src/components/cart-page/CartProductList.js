@@ -2,8 +2,8 @@ import TextField from '@mui/material/TextField';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
 import { useContext, useEffect, useState } from 'react';
-import {API} from './global'
-import { globalContext } from './App';
+import {API} from '../../global'
+import { globalContext } from '../../App';
 
 
 export function CartProductList({ fetchCart, setTotal}) {

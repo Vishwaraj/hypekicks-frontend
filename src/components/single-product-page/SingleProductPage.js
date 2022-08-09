@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { ProductBody } from './ProductBody';
 import { RelatedProducts } from './RelatedProducts';
 import { useEffect, useState } from 'react';
-import { API } from './global';
+import { API } from '../../global';
 
 export function SingleProductPage() {
 
