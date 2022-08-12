@@ -1,0 +1,28 @@
+
+.admin-orders-page {
+    margin-top: 10rem;
+    margin-bottom: 5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+.orders-card-list {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.user-order-body {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 2rem;
+    width: 60vw;
+}
+
+.admin-orders-page-body {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem
+}

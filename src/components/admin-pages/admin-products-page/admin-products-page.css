@@ -1,0 +1,21 @@
+
+
+.admin-products-page {
+    margin-top: 10rem;
+    margin-bottom: 7rem;
+    margin-left: 3rem;
+    margin-right: 5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem
+}
+
+.admin-products-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border-right: 1px solid grey;
+    padding-right: 2rem;
+    width: 15vw;
+    height: 100%;
+}

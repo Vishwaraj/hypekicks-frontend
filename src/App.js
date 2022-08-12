@@ -22,6 +22,14 @@ import { ProfileOrdersPage } from "./components/profile-orders-page/ProfileOrder
 import { ProfileAddressPage } from "./components/profile-address-page/ProfileAddressPage";
 import { ProfileAccountDetailsPage } from "./components/profile-account-details-page/ProfileAccountDetailsPage";
 import { OrderSuccessPage } from "./components/order-success-page/OrderSuccessPage";
+import AdminPortalPage from "./components/admin-pages/admin-portal-page/AdminPortalPage";
+import AdminSignUpPage from "./components/admin-pages/admin-sign-up-page/AdminSignUpPage";
+import AdminLoginPage from "./components/admin-pages/admin-login-page/AdminLoginPage";
+import AdminDashboardPage from "./components/admin-pages/admin-dashboard-page/AdminDashboardPage";
+import AdminUsersPage from "./components/admin-pages/admin-users-page/AdminUsersPage";
+import AdminOrdersPage from "./components/admin-pages/admin-orders-page/AdminOrdersPage";
+import AdminProductsPage from "./components/admin-pages/admin-products-page/AdminProductsPage";
+import AdminProductsAllSneakersPage from "./components/admin-pages/admin-products-all-sneakers-page/AdminProductsAllSneakersPage";
 
 
 
@@ -115,6 +123,16 @@ function App() {
               path="/profile-page/account-details"
               element={<ProfileAccountDetailsPage />}
             />
+
+            {/* admin routes */}
+            <Route path='/admin-portal' element={<AdminPortalPage />} />
+            <Route path='/admin/sign-up' element={<AdminSignUpPage />} />
+            <Route path='/admin/login' element={<AdminLoginPage />} />
+            <Route path='/admin/dashboard' element={<AdminDashboardPage />} />
+            <Route path='/admin/users' element={<AdminUsersPage />} />
+            <Route path='/admin/orders' element={<AdminOrdersPage />} />
+            <Route path='/admin/products' element={<AdminProductsPage />} />
+            <Route path='/admin/products/all-sneakers' element={<AdminProductsAllSneakersPage />} />
           </Routes>
 
           <Footer />

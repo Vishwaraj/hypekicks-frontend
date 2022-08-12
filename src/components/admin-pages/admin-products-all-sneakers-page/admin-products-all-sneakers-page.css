@@ -1,0 +1,16 @@
+
+
+.admin-products-all-sneakers-page {
+    margin-top: 10rem;
+    margin-left: 3rem;
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    margin-bottom: 5rem;
+}
+
+.admin-products-all-sneakers-body {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}

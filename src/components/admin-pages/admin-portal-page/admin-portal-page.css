@@ -1,0 +1,23 @@
+
+
+.admin-portal-page {
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: row;
+    margin-left: 7rem;
+    margin-right: 5rem;
+    justify-content: space-between;
+    margin-bottom: 5rem;
+}
+
+.admin-portal-page > img {
+    width: 30vw
+}
+
+.admin-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-right: 10rem;
+    margin-top: 9rem;
+}

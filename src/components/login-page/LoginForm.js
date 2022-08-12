@@ -79,9 +79,13 @@ export function LoginForm() {
       </form>
       <h3>Don't have an account?</h3>
       <div className='login-option-buttons'>
-        <Button variant="outlined" color='inherit'>Log in with Google</Button>
-        <Button variant="outlined" color='inherit'>Log in with FaceBook</Button>
+        {/* <Button variant="outlined" color='inherit'>Log in with Google</Button>
+        <Button variant="outlined" color='inherit'>Log in with FaceBook</Button> */}
         <Button variant="outlined" color='inherit' onClick={() => navigate('/signup')}>Create Account</Button>
+      </div>
+      <h3 style={{marginTop: "1rem"}}>Are you an Admin?</h3>
+      <div className='admin-account-button' >
+      <Button style={loginButton} onClick={()=>navigate('/admin-portal')} variant="outlined" color='inherit' >Admin Portal</Button>
       </div>
     </div>
   );
