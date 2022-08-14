@@ -1,0 +1,10 @@
+
+
+.admin-products-update-sneakers-page {
+    margin-top: 10rem;
+    margin-bottom: 5rem;
+    margin-left: 3rem;
+    display: flex;
+    flex-direction: row;
+    gap: 5rem;
+}

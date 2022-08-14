@@ -79,14 +79,33 @@ export default function AdminUsersPage() {
 
 export function AdminUsersSideBar() {
 
+    const [loggedOut, setLoggedOut] = useState(false);
+
+    const adminLogout = () => {
+        window.localStorage.removeItem('adminToken');
+        window.localStorage.removeItem('adminName');
+        setLoggedOut(true);
+        setTimeout(() => {navigate('/admin-portal')}, 2000)
+    }
+
     const navigate = useNavigate();
+
+    const handleClose = () => {
+        setLoggedOut(false)
+    }
 
     return (
         <>
             <div className='admin-users-sidebar'>
             <Button onClick={()=>navigate('/admin/users')} variant='text' color='inherit' ><h2>Users</h2></Button>
             <Button onClick={()=>navigate('/admin/orders')} variant='text' color='inherit' ><h2>Orders</h2></Button>
+            <Button onClick={()=>adminLogout()} variant='text' color='inherit' ><h2>Log Out</h2></Button>
             </div>
+            <Snackbar open={loggedOut} autoHideDuration={6000} onClose={handleClose} >
+                <Alert onClose={handleClose} severity='success' variant='filled'>
+                    Log Out Successful, you will be redirected to the admin portal.
+                </Alert>
+            </Snackbar>
         </>
     )
 }

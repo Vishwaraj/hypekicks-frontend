@@ -30,6 +30,8 @@ import AdminUsersPage from "./components/admin-pages/admin-users-page/AdminUsers
 import AdminOrdersPage from "./components/admin-pages/admin-orders-page/AdminOrdersPage";
 import AdminProductsPage from "./components/admin-pages/admin-products-page/AdminProductsPage";
 import AdminProductsAllSneakersPage from "./components/admin-pages/admin-products-all-sneakers-page/AdminProductsAllSneakersPage";
+import AdminProductsAddSneakerPage from "./components/admin-pages/admin-products-add-sneakers-page/AdminProductsAddSneakerPage";
+import AdminProductsUpdateSneakersPage from "./components/admin-pages/admin-products-update-sneakers-page/AdminProductsUpdateSneakersPage";
 
 
 
@@ -133,6 +135,8 @@ function App() {
             <Route path='/admin/orders' element={<AdminOrdersPage />} />
             <Route path='/admin/products' element={<AdminProductsPage />} />
             <Route path='/admin/products/all-sneakers' element={<AdminProductsAllSneakersPage />} />
+            <Route path='/admin/products/add-sneakers' element={<AdminProductsAddSneakerPage />} />
+            <Route path='/admin/products/update-sneakers/:id' element={<AdminProductsUpdateSneakersPage />} />
           </Routes>
 
           <Footer />

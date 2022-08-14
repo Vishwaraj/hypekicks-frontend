@@ -1,0 +1,25 @@
+
+
+.admin-products-add-sneakers-page {
+    margin-top: 10rem;
+    margin-bottom: 5rem;
+    margin-left: 3rem;
+    display: flex;
+    flex-direction: row;
+    gap: 5.5rem;
+}
+
+.add-sneakers-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 50vw;
+    margin-top: 2rem;
+}
+
+.add-sneakers-category-select {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+}
