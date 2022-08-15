@@ -1,5 +1,5 @@
 import Button from "@mui/material/Button";
-import { TextField } from "@mui/material";
+import { Alert, Snackbar, TextField } from "@mui/material";
 import {useFormik} from 'formik';
 import * as yup from 'yup';
 import {API} from '../../global';
@@ -25,6 +25,9 @@ export function ProfileAccountForm({initialForm}) {
 
   const user = window.localStorage.getItem('user');
   const token = window.localStorage.getItem('token');
+
+  //state for snackbar -->
+  const [accUpdated, setAccUpdated] = useState(false);
 
   const {handleChange, handleBlur, handleSubmit, values, errors, touched} = useFormik({
     initialValues: {
@@ -52,11 +55,17 @@ export function ProfileAccountForm({initialForm}) {
       }
      })
      .then(result => result.json())
-     .then(data => console.log(data))
+     .then(data => {console.log(data)
+    setAccUpdated(true);
+    })
      .catch(error => console.log(error))
 
   }
 
+
+  const handleClose = () => {
+    setAccUpdated(false);
+  }
 
   return (
   
@@ -109,6 +118,13 @@ export function ProfileAccountForm({initialForm}) {
     </form>
     : <h3>Loading...</h3>
     }
+
+    <Snackbar open={accUpdated} autoHideDuration={6000} onClose={handleClose} >
+      <Alert onClose={handleClose} severity="success" variant="filled" >
+        Account Details Updated Successfully!
+      </Alert>
+    </Snackbar>
+
     </>
 
    

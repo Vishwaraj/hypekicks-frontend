@@ -5,6 +5,7 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { API } from '../../../global';
 import {useNavigate} from 'react-router-dom';
+import AdminHeader from '../admin-header/AdminHeader';
 
 
 
@@ -70,6 +71,7 @@ export default function AdminLoginPage() {
 
   return (
     <>
+    <AdminHeader/>
         <div className='admin-login-page'>
         
         <div className='admin-login-form' >

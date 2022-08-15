@@ -3,6 +3,7 @@ import React from 'react'
 import adminPortalImage from '../../../images/admin-portal-page.png';
 import { Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import AdminHeader from '../admin-header/AdminHeader';
 
 
 export default function AdminPortalPage() {
@@ -17,6 +18,8 @@ export default function AdminPortalPage() {
     const adminToken = window.localStorage.getItem('adminToken');
 
   return (
+    <>
+    <AdminHeader />
     <div className='admin-portal-page'>
     <img src={adminPortalImage} alt='admin-portal-braces' />
     <div className='admin-buttons' >
@@ -37,5 +40,7 @@ export default function AdminPortalPage() {
    
     </div>
     </div>
+    </>
+
   )
 }

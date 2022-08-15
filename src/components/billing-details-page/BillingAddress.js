@@ -7,7 +7,7 @@ import { globalContext } from '../../App';
 import { API } from '../../global';
 import {useFormik} from 'formik';
 import * as yup from 'yup';
-import { Button } from '@mui/material';
+import { Alert, Button, Snackbar } from '@mui/material';
 
 
 const addressValidationSchema = yup.object({
@@ -24,6 +24,8 @@ const addressValidationSchema = yup.object({
 
 
 export function BillingAddress({form}) {
+
+  const [updated, setUpdated] = useState(false);
 
   const selectStyle = {
     width: '10vw',
@@ -75,16 +77,24 @@ export function BillingAddress({form}) {
         }
       })
       .then(result=> result.json())
-      .then(data => console.log(data))
+      .then(data => {console.log(data)
+      setUpdated(true);
+      })
       .catch(error=> console.log(error))
   }
 
 
+  const handleClose = () => {
+    setUpdated(false);
+  }
+
+
   return (
-    
+
+    <>
     <div className="cart-address-form-details">
 
-      {form !== null ?       <form onSubmit={handleSubmit} className="cart-address-form" action="">
+{form !== null ?       <form onSubmit={handleSubmit} className="cart-address-form" action="">
 
 <TextField onChange={handleChange} onBlur={handleBlur} name='email' defaultValue={values.email}
 error={touched.email && errors.email ? errors.email : null}
@@ -92,31 +102,31 @@ id="outlined-basic" label="E-mail" variant="outlined" />
 
 <div className="address-form-name cart-address-form-name">
 
-  <TextField onChange={handleChange} onBlur={handleBlur} name='firstName' defaultValue={values.firstName}
+<TextField onChange={handleChange} onBlur={handleBlur} name='firstName' defaultValue={values.firstName}
 error={touched.firstName && errors.firstName ? errors.firstName : null}
-  style={nameStyle} id="outlined-basic" label="First Name" variant="outlined" />
-  
-  <TextField onChange={handleChange} onBlur={handleBlur} name='lastName' defaultValue={values.lastName}
+style={nameStyle} id="outlined-basic" label="First Name" variant="outlined" />
+
+<TextField onChange={handleChange} onBlur={handleBlur} name='lastName' defaultValue={values.lastName}
 error={touched.lastName && errors.lastName ? errors.lastName : null}
-  style={nameStyle} id="outlined-basic" label="Last Name" variant="outlined" />
+style={nameStyle} id="outlined-basic" label="Last Name" variant="outlined" />
 
 </div>
 
 <div className='country-area'>
-  <label className="form-label country" htmlFor="country">Country</label>
-  <p><strong>India</strong></p>
+<label className="form-label country" htmlFor="country">Country</label>
+<p><strong>India</strong></p>
 </div>
 
 
 <div className="street-address">
 
-  <TextField onChange={handleChange} onBlur={handleBlur} name='streetAddress' defaultValue={values.streetAddress}
+<TextField onChange={handleChange} onBlur={handleBlur} name='streetAddress' defaultValue={values.streetAddress}
 error={touched.streetAddress && errors.streetAddress ? errors.streetAddress : null}
-  id="outlined-basic" placeholder="House number and street name" label="Street Address" variant="outlined" />
-  
-  <TextField onChange={handleChange} onBlur={handleBlur} name='streetAddressContd' defaultValue={values.streetAddressContd}
+id="outlined-basic" placeholder="House number and street name" label="Street Address" variant="outlined" />
+
+<TextField onChange={handleChange} onBlur={handleBlur} name='streetAddressContd' defaultValue={values.streetAddressContd}
 error={touched.streetAddressContd && errors.streetAddressContd ? errors.streetAddressContd : null}
-  id="outlined-basic" placeholder="Apartment, suite, unit etc." label="Street Address Continued" variant="outlined" />
+id="outlined-basic" placeholder="Apartment, suite, unit etc." label="Street Address Continued" variant="outlined" />
 
 </div>
 
@@ -125,19 +135,19 @@ error={touched.city && errors.city ? errors.city : null}
 id="outlined-basic" label="Town/City" variant="outlined" />
 
 <div className='state-select'>
-  <InputLabel id="demo-simple-select-standard-label">State</InputLabel>
-  <Select
-    labelId="demo-simple-select-standard-label"
-    id="demo-simple-select-standard"
-    label="State"
-    style={selectStyle}
-    onChange={handleChange} onBlur={handleBlur} name='state' defaultValue={values.state}
+<InputLabel id="demo-simple-select-standard-label">State</InputLabel>
+<Select
+labelId="demo-simple-select-standard-label"
+id="demo-simple-select-standard"
+label="State"
+style={selectStyle}
+onChange={handleChange} onBlur={handleBlur} name='state' defaultValue={values.state}
 error={touched.state && errors.state ? errors.state : null}
-  >
-    <MenuItem value='Maharashtra'>Maharashtra</MenuItem>
-    <MenuItem value='Tamil Nadu'>Tamil Nadu</MenuItem>
-    <MenuItem value='Kerala'>Kerala</MenuItem>
-  </Select>
+>
+<MenuItem value='Maharashtra'>Maharashtra</MenuItem>
+<MenuItem value='Tamil Nadu'>Tamil Nadu</MenuItem>
+<MenuItem value='Kerala'>Kerala</MenuItem>
+</Select>
 </div>
 
 <TextField onChange={handleChange} onBlur={handleBlur} name='zipcode' defaultValue={values.zipcode}
@@ -151,9 +161,16 @@ type='number' id="outlined-basic" label="Phone Number" variant="outlined" />
 <Button type='submit' style={saveAddressButton} variant='outlined' color='inherit'>Update Address</Button>
 </form>
 
- : <p>loading</p>}
+: <p>loading</p>}
 
 
-    </div>
+</div>
+
+<Snackbar open={updated} autoHideDuration={6000} onClose={handleClose} >
+  <Alert onClose={handleClose} severity='success' variant='filled'>
+    Address updated successfully!
+  </Alert>
+</Snackbar>
+    </>
   );
 }

@@ -4,6 +4,8 @@ import { Alert, Button, Snackbar, TextField } from '@mui/material';
 import {useFormik} from 'formik';
 import * as yup from 'yup';
 import {API} from '../../../global';
+import { useNavigate } from 'react-router-dom';
+import AdminHeader from '../admin-header/AdminHeader';
 
 
 const adminValidationSchema = yup.object({
@@ -38,6 +40,8 @@ export default function AdminSignUpPage() {
 
     const [open, setOpen] = useState(false);
 
+    const navigate = useNavigate();
+
     const registerAdmin = (admin) => {
      try {
         fetch(`${API}/admin/sign-up`, {
@@ -48,7 +52,9 @@ export default function AdminSignUpPage() {
             }
         })
         .then(result => result.json())
-        .then(data => {console.log(data); setOpen(true)})
+        .then(data => {console.log(data); setOpen(true) 
+        setTimeout(() => {navigate('/admin-portal')}, 2000)
+        })
      } catch (error) {
         console.log(error)
      }
@@ -63,6 +69,8 @@ export default function AdminSignUpPage() {
     const min = 1000000000;
 
   return (
+    <>
+    <AdminHeader />
     <div className='admin-sign-up-page'>
     <h3>Create Admin Account</h3>
     <div className='admin-sign-up-form'>
@@ -102,5 +110,7 @@ export default function AdminSignUpPage() {
         </Alert>
       </Snackbar>
     </div>
+    </>
+
   )
 }

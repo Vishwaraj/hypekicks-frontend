@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import {useFormik} from 'formik';
 import * as yup from 'yup';
 import {API} from '../../global';
+import { useState } from 'react';
+import { Alert, Snackbar } from '@mui/material';
 
 const userValidationSchema = yup.object({
   firstName: yup.string().required('This is a required field'),
@@ -13,6 +15,8 @@ const userValidationSchema = yup.object({
 })
 
 export function SignUpForm() {
+
+  const [signedIn, setSignedIn] = useState(false);
 
   const navigate = useNavigate();
 
@@ -45,12 +49,21 @@ export function SignUpForm() {
       }
     })
     .then(result => result.json())
-    .then(data => {console.log('this is the signed in user', data)})
-    .then(navigate('/home'))
+    .then(data => {console.log('this is the signed in user', data)
+     setSignedIn(true);
+  })
+    .then(()=>{
+      setTimeout(() => {navigate('/login')}, 2000)
+    })
+    .catch(error => console.log(error)) 
   } 
 
+  const handleClose = () => {
+    setSignedIn(false);
+  }
  
   return (
+    <>
     <div className='sign-up-form-body'>
       <form onSubmit={handleSubmit} className='sign-up-form'>
         
@@ -73,6 +86,14 @@ export function SignUpForm() {
         <Button type='submit' style={signUpButton} variant="contained" color='success'>Create Account</Button>
       </form>
     </div>
+
+    <Snackbar open={signedIn} autoHideDuration={6000} onClose={handleClose} >
+      <Alert onClose={handleClose} severity='success' variant='filled' >
+        Account Created Successfully!
+      </Alert>
+    </Snackbar>
+    </>
+
   );
 }
 

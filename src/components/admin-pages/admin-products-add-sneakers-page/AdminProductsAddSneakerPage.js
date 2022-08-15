@@ -6,6 +6,7 @@ import {useFormik} from 'formik';
 import * as yup from 'yup';
 import { API } from '../../../global';
 import { useNavigate } from 'react-router-dom';
+import AdminHeader from '../admin-header/AdminHeader';
 
 
 
@@ -94,6 +95,7 @@ export default function AdminProductsAddSneakerPage() {
 
   return (
     <>
+    <AdminHeader />
         <div className='admin-products-add-sneakers-page'>
         <AdminProductsSideBar />
         <div >

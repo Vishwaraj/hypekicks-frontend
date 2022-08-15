@@ -30,13 +30,16 @@ function CartProductSingle({sneaker, fetchCart, cart, setTotal}) {
   const min = 1;
   const max = 10;
 
+  const token = window.localStorage.getItem('token');
+
   const removeProduct = async () => {
     const id = await sneaker._id;
     fetch(`${API}/cart`, {
       method: "DELETE",
       body: JSON.stringify({id: id}),
       headers: {
-        "Content-type": "application/json"
+        "Content-type": "application/json",
+        "auth-token": token
       }
     })
     .then(result => result.json())
@@ -52,8 +55,33 @@ function CartProductSingle({sneaker, fetchCart, cart, setTotal}) {
   const [totalPrice, setTotalPrice] = useState(sneaker.price);
 
   
+  const updateQuantity = async (quantity, id) => {
+
+      try {
+        const result = await fetch(`${API}/cart`, {
+          method: 'PUT',
+          body: JSON.stringify({quantity: quantity, id: id}),
+          headers: {
+            "Content-type": "application/json",
+            "auth-token": token
+          }
+        })
+
+        const data = await result.json();
+
+        console.log(data);
+
+      } catch (error) {
+        console.log(error);
+      }
+
+  }
+
   const handleCountChange = (e) => {
-    sneaker.quantity = +e.target.value
+    sneaker.quantity = +e.target.value;
+    
+    updateQuantity(sneaker.quantity, sneaker._id);
+    
     setTotalPrice(sneaker.quantity * sneaker.price);
     let newTotal = cart.reduce((acc, curr)=> acc+= curr.price*curr.quantity, 0);
     setTotal(newTotal);
@@ -71,7 +99,7 @@ function CartProductSingle({sneaker, fetchCart, cart, setTotal}) {
       <img src={sneaker.image} alt={sneaker.name} />
       <h2>{sneaker.name}</h2>
       {/* <input type="number" min-value="1" value="1"/> */}
-      <TextField defaultValue={1} onChange={(e)=>handleCountChange(e)} inputProps={{ min, max }} style={cartShoeInput} type='number' />
+      <TextField defaultValue={sneaker.quantity} onChange={(e)=>handleCountChange(e)} inputProps={{ min, max }} style={cartShoeInput} type='number' />
       <h3>₹{totalPrice}</h3>
     </div>
   );

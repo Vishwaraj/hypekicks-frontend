@@ -8,7 +8,10 @@ export function ProfileAccountDetailsPage() {
   const user = window.localStorage.getItem('user');
   const token = window.localStorage.getItem('token');
 
+  //state for initial form data -->
   const [initialForm, setInitialForm] = useState(null);
+
+
 
   const getInitialForm = () => {
     fetch(`${API}/profile-page/account-details`, {

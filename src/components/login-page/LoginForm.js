@@ -5,10 +5,12 @@ import { grey } from '@mui/material/colors';
 import { useFormik } from "formik";
 import * as yup from 'yup';
 import {API} from '../../global';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { globalContext } from '../../App';
+import { Alert, Snackbar } from '@mui/material';
 
 
+//user validation schema -->
 const userValidationSchema = yup.object({
   username: yup.string().required('This field is required'),
   password: yup.string().required().min(8, 'Password needs to be 8 or more characters')
@@ -24,6 +26,8 @@ export function LoginForm() {
     marginTop: '0.5rem'
   }
 
+
+  //formik initialisation -->
   const {handleSubmit, handleChange, handleBlur, values, errors, touched} = useFormik({
     initialValues: {
       username: '',
@@ -38,6 +42,13 @@ export function LoginForm() {
 
   const{ user ,setUser} = useContext(globalContext)
 
+
+  //states for snackbar
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [LoginError, setLoginError] = useState(false);
+
+
+  //function to login user -->
   const loginUser = (user) => {
     
     fetch(`${API}/login`, {
@@ -49,21 +60,40 @@ export function LoginForm() {
     })
     .then(result => result.json())
     .then(data => {console.log('this is the login user', data); setUser(data.user)
-     window.localStorage.setItem('token', data.token);
-     window.localStorage.setItem('user', data.user.username)
-     }) //saving the user to state
     
-    setTimeout(() => {
-    navigate('/home')
-    }, 2000)
+    if(data.token && data.user) { //saving the user to local storage
+      window.localStorage.setItem('token', data.token);
+      window.localStorage.setItem('user', data.user.username);
+      setLoggedIn(true);
+      setTimeout(() => {
+        navigate('/home')
+        }, 2000)
+    }
+     
+      console.log('This message ',data.msg)
+      data.msg ? setLoginError(true) : setLoginError(false);
+
+     }) 
+    .catch(error => {
+      console.log(error)
+    })
+
+
+
     
   }
 
 
+  //handling close for snackbar -->
+  const handleClose = () => {
+    setLoggedIn(false);
+    setLoginError(false);
+  }
 
 
   return (
-    <div className='login-form'>
+    <>
+ <div className='login-form'>
       <form onSubmit={handleSubmit}>
         <div className='form-input'>
           
@@ -88,6 +118,17 @@ export function LoginForm() {
       <Button style={loginButton} onClick={()=>navigate('/admin-portal')} variant="outlined" color='inherit' >Admin Portal</Button>
       </div>
     </div>
+    <Snackbar open={loggedIn} autoHideDuration={6000} onClose={handleClose}>
+      <Alert onClose={handleClose} severity='success' variant='filled'>
+        Log In Successful, you will be redirected to the home page.
+      </Alert>
+    </Snackbar>
+    <Snackbar open={LoginError} autoHideDuration={6000} onClose={handleClose}>
+      <Alert onClose={handleClose} severity='error' variant='filled'>
+        Log In Failed, try again.
+      </Alert>
+    </Snackbar>
+    </>
   );
 }
 

@@ -2,6 +2,7 @@ import { Button } from '@mui/material'
 import React from 'react'
 import './admin-dashboard-page.css';
 import {useNavigate} from 'react-router-dom';
+import AdminHeader from '../admin-header/AdminHeader';
 
 export default function AdminDashboardPage() {
 
@@ -14,6 +15,7 @@ export default function AdminDashboardPage() {
 
   return (
    <>
+   <AdminHeader/>
     <div className='admin-dashboard-page'>
       <div className='admin-dashboard-buttons' >
        <Button onClick={()=>navigate('/admin/products')} style={adminDashboardButtons} variant='outlined' color='inherit' >Products</Button>

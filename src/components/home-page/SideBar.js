@@ -91,7 +91,7 @@ function SingleProduct({sneaker}) {
 
   return (
     <div className='single-shoe'>
-      <Card>
+      <Card >
         <CardMedia
           component="img"
           height="250"

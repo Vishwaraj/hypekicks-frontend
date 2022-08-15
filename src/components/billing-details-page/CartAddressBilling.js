@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 import fireworks from '../../images/fireworks.png';
 import { globalContext } from "../../App";
 import { API } from "../../global";
+import { Alert, Snackbar } from "@mui/material";
 
 
 
@@ -16,12 +17,17 @@ export function CartAddressBilling() {
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  
+  //state for snackbar -->
+  const [redirected, setRedirected] = useState(false);
 
   const {cart} = useContext(globalContext)
 
+  //total code -->
   const total = cart.reduce((total, currentVal)=> total += currentVal.price*currentVal.quantity, 0);
 
+
+  //getting username and token -->
   const username = window.localStorage.getItem('user')
   const token = window.localStorage.getItem('token');
 
@@ -38,6 +44,7 @@ export function CartAddressBilling() {
     .then(data => {
       console.log(data)
       if(data.stripeUrl) {
+        setRedirected(true);
         window.location.href = data.stripeUrl
       }
     })
@@ -45,8 +52,14 @@ export function CartAddressBilling() {
   }
 
 
+  const handleClose = () => {
+   setRedirected(false);
+  }
+
   return (
-    <div>
+
+    <>
+ <div>
     <div className="cart-billing-address">
       <div className="address-subtotal">
         <h3>Subtotal :</h3>
@@ -72,6 +85,14 @@ export function CartAddressBilling() {
     </div>
     <TransitionsModal open={open} handleClose={handleClose}/>
     </div>
+
+    <Snackbar open={redirected} autoHideDuration={6000} onClose={handleClose} >
+      <Alert onClose={handleClose} severity="success" variant="filled" >
+        You are being redirected to payment gateway.
+      </Alert>
+    </Snackbar>
+    </>
+   
 
   );
 }

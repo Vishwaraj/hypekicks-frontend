@@ -2,10 +2,12 @@ import { Alert, Button, Snackbar } from '@mui/material'
 import React, { useState } from 'react'
 import './admin-products-page.css';
 import {useNavigate} from 'react-router-dom';
+import AdminHeader from '../admin-header/AdminHeader';
 
 export default function AdminProductsPage() {
   return (
     <>
+    <AdminHeader />
         <div className='admin-products-page'>
         <AdminProductsSideBar />
         <div className='admin-products-page-body'>

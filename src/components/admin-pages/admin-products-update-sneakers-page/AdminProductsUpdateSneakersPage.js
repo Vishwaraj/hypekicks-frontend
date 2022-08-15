@@ -6,6 +6,7 @@ import {useFormik} from 'formik';
 import * as yup from 'yup';
 import { useNavigate, useParams } from 'react-router-dom';
 import { API } from '../../../global';
+import AdminHeader from '../admin-header/AdminHeader';
 
 
 
@@ -69,6 +70,7 @@ const getRequiredSneaker = async () => {
 
   return (
     <>
+    <AdminHeader />
         <div className='admin-products-update-sneakers-page'>
         <AdminProductsSideBar/>
         <div className='admin-products-update-sneakers-body'>

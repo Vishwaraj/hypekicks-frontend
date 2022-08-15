@@ -4,6 +4,7 @@ import './admin-users-page.css';
 import { API } from '../../../global';
 import DeleteIcon from '@mui/icons-material/Delete';
 import {useNavigate} from 'react-router-dom';
+import AdminHeader from '../admin-header/AdminHeader';
 
 export default function AdminUsersPage() {
 
@@ -60,6 +61,7 @@ export default function AdminUsersPage() {
 
   return (
     <>
+    <AdminHeader />
         <div className='admin-users-page'>
         <AdminUsersSideBar />
         <div className='admin-users-page-body' >

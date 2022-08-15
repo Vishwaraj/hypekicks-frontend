@@ -7,6 +7,7 @@ import Pagination from '@mui/material/Pagination';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useNavigate } from 'react-router-dom';
+import AdminHeader from '../admin-header/AdminHeader';
 
 
 
@@ -81,6 +82,7 @@ export default function AdminProductsAllSneakersPage() {
 
   return (
     <>
+    <AdminHeader />
     <div className='admin-products-all-sneakers-page'>
     <AdminProductsSideBar />
     <div className='admin-products-all-sneakers-body'>

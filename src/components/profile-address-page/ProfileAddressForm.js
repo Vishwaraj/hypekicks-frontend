@@ -6,8 +6,9 @@ import Select from '@mui/material/Select';
 import {useFormik} from 'formik';
 import * as yup from 'yup';
 import { globalContext } from '../../App';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import {API} from '../../global';
+import { Alert, Snackbar } from '@mui/material';
 
 
 const addressValidationSchema = yup.object({
@@ -25,6 +26,8 @@ const addressValidationSchema = yup.object({
 
 
 export function ProfileAddressForm() {
+
+  const [addressAdded, setAddressAdded] = useState(false);
 
   const selectStyle = {
     width: '10vw',
@@ -61,6 +64,7 @@ export function ProfileAddressForm() {
     onSubmit: (address, {resetForm}) => {
       console.log('This is the user address', address);
       addUserAddress(address, user);
+      resetForm();
     }
   })
 
@@ -81,13 +85,20 @@ export function ProfileAddressForm() {
       }
     }) 
     .then(result => result.json())
-    .then(data => console.log(data)) 
+    .then(data => {console.log(data)
+    setAddressAdded(true);
+    }) 
+    .catch(error => console.log(error));
 
   }
 
+  const handleClose = () => {
+    setAddressAdded(false);
+  }
 
 
   return (
+    <>
     <div className="cart-address-form-details">
       <form onSubmit={handleSubmit} className="cart-address-form profile-address-page" action="">
 
@@ -156,5 +167,13 @@ export function ProfileAddressForm() {
         <Button type='submit' style={saveAddressButton} variant='outlined' color='inherit'>Save Address</Button>
       </form>
     </div>
+
+    <Snackbar open={addressAdded} autoHideDuration={6000} onClose={handleClose} >
+      <Alert onClose={handleClose} severity='success' variant='filled' >
+        Address Added Successfully!
+      </Alert>
+    </Snackbar>
+    </>
+
   );
 }

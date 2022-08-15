@@ -1,4 +1,6 @@
+import { Alert, Snackbar } from "@mui/material";
 import Button from "@mui/material/Button";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
@@ -12,14 +14,24 @@ export function ProfileSideBar() {
     fontSize: "1.3rem",
   };
 
+  //state for snackbar -->
+  const [loggedOut, setLoggedOut] = useState(false);
+
   const handleLogout = () => {
     window.localStorage.removeItem('token');
     window.localStorage.removeItem('user');
-    navigate('/')
+    setLoggedOut(true);
+    setTimeout(() => {navigate('/')}, 2000)
   }
 
 
+  const handleClose = () => {
+    setLoggedOut(false);
+  }
+
   return (
+
+    <>
     <div class="profile-sidebar">
       {/* <h4><a href="profile.html">Dashboard</a></h4> */}
       <Button
@@ -66,5 +78,13 @@ export function ProfileSideBar() {
         Log out
       </Button>
     </div>
+
+    <Snackbar open={loggedOut} autoHideDuration={6000} onClose={handleClose} >
+      <Alert onClose={handleClose} severity="success" variant="filled" >
+        Log Out Successful, you will be redirected to landing page.
+      </Alert>
+    </Snackbar>
+    </>
+
   );
 }

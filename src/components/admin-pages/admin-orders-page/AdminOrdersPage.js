@@ -3,6 +3,7 @@ import './admin-orders-page.css';
 import { AdminUsersSideBar } from '../admin-users-page/AdminUsersPage';
 import { Card, CardContent, CardMedia } from '@mui/material';
 import { API } from '../../../global';
+import AdminHeader from '../admin-header/AdminHeader';
 
 export default function AdminOrdersPage() {
 
@@ -33,6 +34,7 @@ useEffect(() => {
 
   return (
     <>
+    <AdminHeader/>
        <div className='admin-orders-page'>
          <AdminUsersSideBar />
          <div className='admin-orders-page-body'>
