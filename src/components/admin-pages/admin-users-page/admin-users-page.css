@@ -1,5 +1,5 @@
 
-
+ 
 .admin-users-page {
     margin-top: 10rem;
     display: flex;
@@ -17,14 +17,14 @@
     height: 100%;
 }
 
-.user-object {
- padding-left: 1rem;
- padding-right: 1rem;
-}
+/* .user-object {
+ height: 22vh;
+} */
 
 .admin-users-page-body {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     gap: 3rem;
+    margin-bottom: 5rem;
 }

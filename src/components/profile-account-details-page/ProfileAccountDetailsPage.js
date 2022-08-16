@@ -5,14 +5,16 @@ import { ProfileSideBar } from "../ProfileSideBar";
 
 export function ProfileAccountDetailsPage() {
 
+  //getting user and token
   const user = window.localStorage.getItem('user');
   const token = window.localStorage.getItem('token');
+
 
   //state for initial form data -->
   const [initialForm, setInitialForm] = useState(null);
 
 
-
+  //function to get initial form data -->
   const getInitialForm = () => {
     fetch(`${API}/profile-page/account-details`, {
       method: 'POST',

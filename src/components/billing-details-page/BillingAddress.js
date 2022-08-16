@@ -10,6 +10,7 @@ import * as yup from 'yup';
 import { Alert, Button, Snackbar } from '@mui/material';
 
 
+//validation for address form
 const addressValidationSchema = yup.object({
   email: yup.string().required('This is a required field'),
   firstName: yup.string().required('This is a required field'),
@@ -25,8 +26,10 @@ const addressValidationSchema = yup.object({
 
 export function BillingAddress({form}) {
 
+  //setting state for snackbar
   const [updated, setUpdated] = useState(false);
 
+  //styles for textfield components -->
   const selectStyle = {
     width: '10vw',
     marginLeft: '1rem'
@@ -41,7 +44,7 @@ export function BillingAddress({form}) {
   };
 
 
-
+  //formik initialization
   const {handleChange, handleBlur, handleSubmit, values, errors, touched} = useFormik({
     initialValues: {
       email: form.email,
@@ -61,8 +64,11 @@ export function BillingAddress({form}) {
     }
   })
 
+  
+  //getting token
   const token = window.localStorage.getItem('token');
 
+  //function to update address -->
   const updateAddress = (address) => {
 
     const username = window.localStorage.getItem('user');
@@ -84,6 +90,7 @@ export function BillingAddress({form}) {
   }
 
 
+  //function to close snackbar -->
   const handleClose = () => {
     setUpdated(false);
   }

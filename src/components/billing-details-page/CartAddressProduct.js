@@ -4,6 +4,7 @@ import {globalContext} from '../../App'
 
 export function CartAddressProductList() {
 
+  //getting global context
   const {cart, fetchCart} = useContext(globalContext);
 
   useEffect(()=>{

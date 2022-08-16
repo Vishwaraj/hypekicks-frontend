@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import AdminHeader from '../admin-header/AdminHeader';
 
 
+//admin validation schema
 const adminValidationSchema = yup.object({
     adminName: yup.string().required().min(5, 'Minimum 5 Characters Required'),
     firstName: yup.string().required('This is a required field'),
@@ -19,10 +20,12 @@ const adminValidationSchema = yup.object({
 
 export default function AdminSignUpPage() {
 
+    //style for textfields
     const nameTextFields = {
         width: "24vw"
     }
 
+    //formik initialisation
     const {handleSubmit, handleChange, handleBlur, values, errors, touched} = useFormik({
         initialValues: {
             adminName: '',
@@ -38,10 +41,14 @@ export default function AdminSignUpPage() {
         }
     })
 
+
+    //state for snackbar
     const [open, setOpen] = useState(false);
 
     const navigate = useNavigate();
 
+
+    //function to register the admin
     const registerAdmin = (admin) => {
      try {
         fetch(`${API}/admin/sign-up`, {
@@ -60,11 +67,14 @@ export default function AdminSignUpPage() {
      }
     }
 
+
+    //function to close snackbar
     const handleClose = () => {
         setOpen(false);
     }
 
 
+    //min and max for phone textfield
     const max = 9999999999;
     const min = 1000000000;
 

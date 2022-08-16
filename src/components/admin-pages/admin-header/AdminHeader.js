@@ -6,6 +6,7 @@ import '../../../App.css'
 
 export default function AdminHeader() {
 
+  //styles for the appbar
     const appBarStyles = {
         backgroundColor: '#212529',
         display: 'flex',
@@ -16,6 +17,7 @@ export default function AdminHeader() {
 
       const navigate = useNavigate();
 
+      //getting the admin token
       const adminToken = window.localStorage.getItem('adminToken');
 
   return (

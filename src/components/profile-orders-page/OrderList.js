@@ -4,12 +4,16 @@ import "../../App.css";
 
 export function OrderList() {
 
+  //setting state for orders and products array
   const [orders, setOrders] = useState([]);
   const [productsArr, setProductsArr] = useState([]);
 
+  //getting user and token
   const user = window.localStorage.getItem('user');
   const token = window.localStorage.getItem('token');
 
+
+  //function to get orders placed -->
   const getOrders = () => {
     fetch(`${API}/profile-page/orders`, {
       method: 'POST',
@@ -38,6 +42,7 @@ export function OrderList() {
     </div>
   );
 }
+
 function OrderBody({user, sneaker}) {
   return (
     <div className='order-body'>
@@ -46,6 +51,7 @@ function OrderBody({user, sneaker}) {
     </div>
   );
 }
+
 function ProductOrder({sneaker}) {
   return (
     <div className="product-order">

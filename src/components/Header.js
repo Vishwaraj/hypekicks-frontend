@@ -13,9 +13,13 @@ import HomeIcon from '@mui/icons-material/Home';
 // --------------------header component------------------------
 export function Header() {
 
+  //getting the global context
 const {cart} = useContext(globalContext);
+
+//getting the token
 const token = window.localStorage.getItem('token');
 
+//custom styles for appbar component
   const appBarStyles = {
     backgroundColor: '#212529',
     display: 'flex',

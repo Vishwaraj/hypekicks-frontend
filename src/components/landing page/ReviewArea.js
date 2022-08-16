@@ -1,5 +1,7 @@
 import { Carousel } from 'react-responsive-carousel';
 
+
+//carousel component for reviews
 export function ReviewArea() {
   return (
 

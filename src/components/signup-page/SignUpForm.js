@@ -16,15 +16,20 @@ const userValidationSchema = yup.object({
 
 export function SignUpForm() {
 
+  //setting state for snackbar
   const [signedIn, setSignedIn] = useState(false);
 
   const navigate = useNavigate();
 
+
+  //style for signup button
   const signUpButton = {
     height: '8vh',
     marginTop: '1rem'
   };
 
+
+  //formik initialization
   const {handleSubmit, handleChange, handleBlur, values, errors, touched} = useFormik({
     initialValues: {
       userName: '',
@@ -40,6 +45,8 @@ export function SignUpForm() {
     }
   })
 
+
+  //function to signup user -->
   const signUpUser = (user) => {
     fetch(`${API}/signup`, {
       method: 'POST',
@@ -50,7 +57,7 @@ export function SignUpForm() {
     })
     .then(result => result.json())
     .then(data => {console.log('this is the signed in user', data)
-     setSignedIn(true);
+     setSignedIn(true);  //setting state to snackbar
   })
     .then(()=>{
       setTimeout(() => {navigate('/login')}, 2000)
@@ -58,6 +65,8 @@ export function SignUpForm() {
     .catch(error => console.log(error)) 
   } 
 
+
+  //function to close snackbar
   const handleClose = () => {
     setSignedIn(false);
   }
@@ -97,4 +106,4 @@ export function SignUpForm() {
   );
 }
 
-//onClick={() => navigate('/home')
+

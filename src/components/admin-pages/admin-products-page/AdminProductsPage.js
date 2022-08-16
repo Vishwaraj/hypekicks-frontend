@@ -21,8 +21,12 @@ export default function AdminProductsPage() {
 
 export function AdminProductsSideBar() {
 
+  
+  //setting state for snackbar
   const [loggedOut, setLoggedOut] = useState(false);
 
+
+  //function to logout admin -->
   const adminLogout = () => {
     window.localStorage.removeItem('adminToken');
     window.localStorage.removeItem('adminName');
@@ -33,6 +37,8 @@ export function AdminProductsSideBar() {
 
     const navigate = useNavigate();
 
+
+    //function to close snackbar -->
     const handleClose = () => {
       setLoggedOut(false)
     }

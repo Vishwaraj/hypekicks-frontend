@@ -7,10 +7,16 @@ import AdminHeader from '../admin-header/AdminHeader';
 
 export default function AdminOrdersPage() {
 
+
+//setting state for orders
 const [orders, setOrders] = useState([]);
 
+
+//getting the admin token
 const adminToken = window.localStorage.getItem('adminToken');
 
+
+//function to get orders -->
 const getOrders = async () => {
     try {
         const result = await fetch(`${API}/admin/orders`, {
@@ -51,6 +57,8 @@ useEffect(() => {
 
 function UserOrderBody({order}) {
     
+
+    //styles for user card
     const orderCard = {
         width: '15vw',
         height: '100%'

@@ -28,7 +28,9 @@ export function HomePage() {
     })
       .then((result) => result.json())
       .then((data) => {
-        setHomeProducts(data);
+        //setting home products state
+        setHomeProducts(data); 
+        //setting searched products state
         setSearchedProducts(null);
       });
   };

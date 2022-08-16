@@ -6,13 +6,19 @@ import { CartAddressProductList } from "./CartAddressProduct";
 import { globalContext } from "../../App";
 
 export function BillingDetailsPage() {
+
+  //getting cart form global context
   const { cart } = useContext(globalContext);
 
+  //getting username and token
   const username = window.localStorage.getItem("user");
   const token = window.localStorage.getItem('token');
 
+  //setting state for form data
   const [form, setForm] = useState(null);
 
+  
+  //function to get address data -->
   const getAddressData = () => {
     fetch(`${API}/cart/billing-details`, {
       method: "POST",

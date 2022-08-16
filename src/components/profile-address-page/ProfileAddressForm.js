@@ -27,8 +27,11 @@ const addressValidationSchema = yup.object({
 
 export function ProfileAddressForm() {
 
+  //setting state for snackbar
   const [addressAdded, setAddressAdded] = useState(false);
 
+  
+  //styles for textfield components
   const selectStyle = {
     width: '10vw',
     marginLeft: '1rem'
@@ -46,8 +49,8 @@ export function ProfileAddressForm() {
     width: '29vw'
   };
 
-  // formik code -
-
+  
+  // formik initialization -->
   const {handleChange, handleBlur, handleSubmit, values, errors, touched} = useFormik({
     initialValues: {
       email: '',
@@ -68,11 +71,13 @@ export function ProfileAddressForm() {
     }
   })
 
-  //getting the user name from context -
 
+  //getting the user and token -
   const user = window.localStorage.getItem('user');
   const token = window.localStorage.getItem('token');
 
+
+  //function to add user address -->
   const addUserAddress = (address, user) => {
 
     fetch(`${API}/profile-page/addresses`, {
@@ -92,6 +97,8 @@ export function ProfileAddressForm() {
 
   }
 
+
+  //function to close snackbar -->
   const handleClose = () => {
     setAddressAdded(false);
   }

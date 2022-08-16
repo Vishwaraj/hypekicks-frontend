@@ -10,11 +10,13 @@ export default function AdminPortalPage() {
 
     const navigate = useNavigate();
 
+    //style for admin portal buttons
     const adminPortalButtons = {
         height: "10vh",
         width: "20vw"
     }
 
+    //getting admin token
     const adminToken = window.localStorage.getItem('adminToken');
 
   return (

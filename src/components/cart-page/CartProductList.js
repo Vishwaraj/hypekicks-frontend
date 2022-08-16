@@ -8,6 +8,7 @@ import { globalContext } from '../../App';
 
 export function CartProductList({ fetchCart, setTotal}) {
 
+  //getting the cart from global context
   const {cart} = useContext(globalContext);
 
   return (
@@ -23,15 +24,20 @@ export function CartProductList({ fetchCart, setTotal}) {
 
 function CartProductSingle({sneaker, fetchCart, cart, setTotal}) {
 
+  //style for cart shoe quantity input
   const cartShoeInput = {
     width: '5vw',
   };
 
+  //setting minimum and maximum quantity for sneaker
   const min = 1;
   const max = 10;
 
+  //getting the token
   const token = window.localStorage.getItem('token');
 
+
+  //function to remove sneaker from cart
   const removeProduct = async () => {
     const id = await sneaker._id;
     fetch(`${API}/cart`, {
@@ -55,6 +61,7 @@ function CartProductSingle({sneaker, fetchCart, cart, setTotal}) {
   const [totalPrice, setTotalPrice] = useState(sneaker.price);
 
   
+  //function to update quantity in DB
   const updateQuantity = async (quantity, id) => {
 
       try {
@@ -77,6 +84,8 @@ function CartProductSingle({sneaker, fetchCart, cart, setTotal}) {
 
   }
 
+
+  //function to handle count change
   const handleCountChange = (e) => {
     sneaker.quantity = +e.target.value;
     
@@ -87,10 +96,6 @@ function CartProductSingle({sneaker, fetchCart, cart, setTotal}) {
     setTotal(newTotal);
   }
 
-
-  
-
-
   return (
     <div className="cart-product">
       <IconButton onClick={()=>removeProduct()}>
@@ -98,7 +103,6 @@ function CartProductSingle({sneaker, fetchCart, cart, setTotal}) {
       </IconButton>
       <img src={sneaker.image} alt={sneaker.name} />
       <h2>{sneaker.name}</h2>
-      {/* <input type="number" min-value="1" value="1"/> */}
       <TextField defaultValue={sneaker.quantity} onChange={(e)=>handleCountChange(e)} inputProps={{ min, max }} style={cartShoeInput} type='number' />
       <h3>₹{totalPrice}</h3>
     </div>

@@ -10,6 +10,7 @@ export function RelatedProducts({sneaker, setSingleProduct}) {
 
   const navigate = useNavigate();
 
+  //styles for cursor
   const cursorStyle = {
     cursor: 'pointer',
     marginTop: 0

@@ -18,9 +18,12 @@ const userValidationSchema = yup.object({
 
 export function LoginForm() {
 
+  //style for button
   const greyButton = grey[900];
   const navigate = useNavigate();
 
+
+  //style for loginButton
   const loginButton = {
     width: '100%',
     marginTop: '0.5rem'
@@ -40,6 +43,8 @@ export function LoginForm() {
     }
   })
 
+
+  //getting global user state
   const{ user ,setUser} = useContext(globalContext)
 
 
@@ -61,6 +66,8 @@ export function LoginForm() {
     .then(result => result.json())
     .then(data => {console.log('this is the login user', data); setUser(data.user)
     
+
+    //checking for token and user
     if(data.token && data.user) { //saving the user to local storage
       window.localStorage.setItem('token', data.token);
       window.localStorage.setItem('user', data.user.username);
@@ -70,6 +77,7 @@ export function LoginForm() {
         }, 2000)
     }
      
+      //code for login error snackbar
       console.log('This message ',data.msg)
       data.msg ? setLoginError(true) : setLoginError(false);
 

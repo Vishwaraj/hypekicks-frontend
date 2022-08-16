@@ -7,11 +7,13 @@ import { globalContext } from "../../App";
 export function OrderSuccessPage() {
   const navigate = useNavigate();
 
+  //getting function and set cart from global context 
   const { addOrders, setCart } = useContext(globalContext);
 
+  //setting ref
   const orderSuccessRef = useRef();
 
-
+  //effect to add sneakers to the orders collections -->
   useLayoutEffect(() => {
     if (!orderSuccessRef.current) {
       addOrders();
@@ -22,11 +24,7 @@ export function OrderSuccessPage() {
 
   });
 
-
-
-
-
-  console.log(orderSuccessRef.current);
+  
   return (
     <>
       <div className="order-placed-modal">

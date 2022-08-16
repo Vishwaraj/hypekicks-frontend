@@ -41,7 +41,6 @@ export const globalContext = createContext();
 
 function App() {
   //cart context here
-
   const [cart, setCart] = useState([]);
   //  const [userAddress, setUserAddress] = useState({})
   const [user, setUser] = useState({});

@@ -14,21 +14,30 @@ const accountFormValidation = yup.object({
 })
 
 export function ProfileAccountForm({initialForm}) {
+
+  //style for textfield
   const accDetailsName = {
     width: "30vw",
   };
 
+
+  //style for form submit button
   const accDetailsButton = {
     width: "100%",
     marginTop: "2rem",
   };
 
+
+  //getting user and token
   const user = window.localStorage.getItem('user');
   const token = window.localStorage.getItem('token');
+
 
   //state for snackbar -->
   const [accUpdated, setAccUpdated] = useState(false);
 
+
+  //formik initialization -->
   const {handleChange, handleBlur, handleSubmit, values, errors, touched} = useFormik({
     initialValues: {
       firstName: initialForm.firstName,
@@ -43,7 +52,7 @@ export function ProfileAccountForm({initialForm}) {
   })
 
 
-
+  //function to send the updated address -->
   const sendUpdate = (update) => {
    
      fetch(`${API}/profile-page/account-details`, {
@@ -63,6 +72,7 @@ export function ProfileAccountForm({initialForm}) {
   }
 
 
+  //function to close the snackbar
   const handleClose = () => {
     setAccUpdated(false);
   }

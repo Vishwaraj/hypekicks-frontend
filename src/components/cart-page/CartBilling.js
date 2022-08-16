@@ -8,8 +8,10 @@ export function CartBilling({total, setTotal}) {
 
   const navigate = useNavigate();
 
+  //getting cart from global context
   const {cart} = useContext(globalContext)
 
+  //calculating total price in cart
   let sum = cart.reduce((total, currentVal)=> total += currentVal.price*currentVal.quantity, 0);
   setTotal(sum)
 

@@ -15,15 +15,17 @@ import { Alert, Snackbar } from "@mui/material";
 export function CartAddressBilling() {
 
 
+  //state for modal
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   
   //state for snackbar -->
   const [redirected, setRedirected] = useState(false);
 
+  //getting cart from global context
   const {cart} = useContext(globalContext)
 
-  //total code -->
+  //total price in cart code -->
   const total = cart.reduce((total, currentVal)=> total += currentVal.price*currentVal.quantity, 0);
 
 
@@ -31,6 +33,8 @@ export function CartAddressBilling() {
   const username = window.localStorage.getItem('user')
   const token = window.localStorage.getItem('token');
 
+
+  //function to redirect to payment gateway -->
   const handleClick = () => {
     fetch(`${API}/create-checkout-session`, {
       method: 'POST',
@@ -52,6 +56,7 @@ export function CartAddressBilling() {
   }
 
 
+  //function to close snackbar -->
   const handleClose = () => {
    setRedirected(false);
   }
@@ -98,6 +103,7 @@ export function CartAddressBilling() {
 }
 
 
+//modal for successful order
 function TransitionsModal({open, handleClose}) {
 
   const navigate = useNavigate();

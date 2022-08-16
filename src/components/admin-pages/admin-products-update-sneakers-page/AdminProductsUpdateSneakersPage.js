@@ -10,6 +10,7 @@ import AdminHeader from '../admin-header/AdminHeader';
 
 
 
+//sneaker validation schema 
 const sneakerValidationSchema = yup.object({
     name: yup.string().required('This is a required field'),
     image: yup.string().required('This is a required field').test('checkValidImageURL', 'Must use valid image URL', value => testImage(value).then(()=>{return true}).catch(err=>{return false})),
@@ -18,6 +19,9 @@ const sneakerValidationSchema = yup.object({
     price: yup.number().required('This is a required field')
   }); 
 
+
+
+  //function to check valid image url
   const testImage = (url) => {
 
     return new Promise((resolve, reject) => {
@@ -40,12 +44,17 @@ const sneakerValidationSchema = yup.object({
 
 export default function AdminProductsUpdateSneakersPage() {
 
+    //getting sneaker id from url params
     const {id} = useParams();
+
+    //getting admin token
     const adminToken = window.localStorage.getItem('adminToken');
 
+    //setting state for sneaker data
     const [sneaker, setSneaker] = useState(null);
 
 
+    //function to get required sneaker data -->
 const getRequiredSneaker = async () => {
     try {
         const result = await fetch(`${API}/admin/products/update-sneakers/${id}`, {
@@ -94,14 +103,17 @@ const getRequiredSneaker = async () => {
 
 function EditSneakerForm ({sneaker, id, adminToken}) {
 
+  //setting state for snackbar
     const [updated, setUpdated] = useState(false);
     const navigate = useNavigate();
 
+
+    //styles for category select
     const categorySelect = {
         width: "41vw"
       }
 
-
+   //formik initialization -->
     const {handleSubmit, handleChange, handleBlur, values, errors, touched} = useFormik({
         initialValues: {
           name: sneaker.name,
@@ -118,6 +130,7 @@ function EditSneakerForm ({sneaker, id, adminToken}) {
       })
 
 
+      //function to update sneaker -->
       const updateSneaker = async (sneaker) => {
             try {
                 const result = await fetch(`${API}/admin/products/update-sneakers/${id}`, {
@@ -140,6 +153,8 @@ function EditSneakerForm ({sneaker, id, adminToken}) {
             }
       }
 
+
+      //function to close snackbar
       const handleClose = () => {
         setUpdated(false);
       }

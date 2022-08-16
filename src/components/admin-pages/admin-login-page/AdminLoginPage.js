@@ -9,6 +9,7 @@ import AdminHeader from '../admin-header/AdminHeader';
 
 
 
+//admin login schema -->
 const adminLoginSchema = yup.object({
     adminName: yup.string().required('This is a required field').min(5, 'Minimum 5 characters required'),
     password: yup.string().required('This is a required field').min(8, 'Minimum 8 characters required')
@@ -17,6 +18,8 @@ const adminLoginSchema = yup.object({
 
 export default function AdminLoginPage() {
 
+
+  //formik initialization
     const {handleChange, handleSubmit, handleBlur, values, errors, touched} = useFormik({
         initialValues: {
             adminName: '',
@@ -31,8 +34,12 @@ export default function AdminLoginPage() {
 
     
     const navigate = useNavigate()
+    
+    //state for snackbar
     const [open, setOpen] = useState(false);
 
+
+    //function to login admin -->
     const loginAdmin = (admin) => {
       try {
         fetch(`${API}/admin/login`, {
@@ -64,6 +71,7 @@ export default function AdminLoginPage() {
     }
 
 
+    //function to close snackbar
     const handleClose = () => {
         setOpen(false);
     }

@@ -13,19 +13,25 @@ import AdminHeader from '../admin-header/AdminHeader';
 
 export default function AdminProductsAllSneakersPage() {
 
+
+    //setting states for sneakers, snackbar ,and pagination
     const [allSneakers, setAllSneakers] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [sneakersPerPage] = useState(10);
     const [deleted , setDeleted] = useState(false);
 
+
+    //function to close snackbar -->
     const handleClose = () => {
         setDeleted(false);
     }
 
+
+    //getting admin token
     const adminToken = window.localStorage.getItem('adminToken');
 
 
-    //code to get sneakers -->
+    //function to get sneakers -->
     const getSneakers = async () => {
      try {
         const result = await fetch(`${API}/admin/products/all-sneakers`, {
@@ -49,7 +55,7 @@ export default function AdminProductsAllSneakersPage() {
     }, [])
 
 
-    //code to delete sneaker -->
+    //function to delete sneaker -->
     const deleteSneaker = async (id) => {
         try {
             const result = await fetch(`${API}/admin/products/all-sneakers`, {
@@ -72,6 +78,7 @@ export default function AdminProductsAllSneakersPage() {
     }
 
 
+    //creating pagination count
     const paginationCount = Math.ceil(allSneakers.length / sneakersPerPage);
 
     //get current sneakers ->
@@ -106,6 +113,8 @@ export default function AdminProductsAllSneakersPage() {
 
 function SneakersCard({sneaker, deleteSneaker}) {
 
+
+    //styles for sneakers card
     const sneakerCardStyles = {
         width: "70vw",
         display: 'flex',

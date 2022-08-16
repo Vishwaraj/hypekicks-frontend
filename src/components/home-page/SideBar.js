@@ -9,6 +9,7 @@ import { useState } from 'react';
 
 export function SideBar({handleClick, setClicked, clicked}) {
 
+  //styles for text color
   const textColor = {
     color: 'white',
     fontSize: '1.5rem'
@@ -16,6 +17,8 @@ export function SideBar({handleClick, setClicked, clicked}) {
 
   const navigate = useNavigate();
 
+  
+  //getting category from url params
   const {category} = useParams()
 
   
@@ -29,15 +32,10 @@ export function SideBar({handleClick, setClicked, clicked}) {
        disabled={category === 'new-releases' ? true : false}
       >New Releases</Button>
 
-       
 
-        
-        
-        
         <Button style={textColor}  variant="text" onClick={(event)=>{handleClick(event); }} value={'popular'} color='inherit'
         disabled={category === 'popular' ? true : false}
         >Popular</Button>
-
 
        
         <Button style={textColor}  variant="text" onClick={(event)=>{handleClick(event); }} value={'trending'} color='inherit'
@@ -48,24 +46,11 @@ export function SideBar({handleClick, setClicked, clicked}) {
         disabled={category === 'all' ? true : false}
         >All</Button>
 
-       {/* <Button style={textColor}  variant="text" onClick={()=>navigate('/home')} value={'all'} color='inherit'
-        disabled={category === 'all' ? true : false}
-        >All</Button> */}
-
       </div>
     </div>
   );
 }
 export function SearchBar({setSearchTerm, searchTerm, handleSearch}) {
-
- 
-
-  const searchBar = {
-    width: '30vw',
-  };
-
-
-
 
   return (
     <div>
@@ -77,10 +62,14 @@ export function SearchBar({setSearchTerm, searchTerm, handleSearch}) {
     </div>
   );
 }
+
+
 function SingleProduct({sneaker}) {
 
   const navigate = useNavigate();
 
+
+  //style for cursor
   const cursorStyle = {
     cursor: 'pointer',
     marginTop: 0,
@@ -106,10 +95,12 @@ function SingleProduct({sneaker}) {
     </div>
   );
 }
+
+
 export function ProductsList({homeProducts, searchedProducts}) {
 
- 
 
+  //conditional rendering by checking whether searched products exist
   return (
     <div className='products-list'>
     { 

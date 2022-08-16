@@ -4,6 +4,7 @@ import { faBox, faHeart, faTruck } from '@fortawesome/free-solid-svg-icons';
 // ----------------component for stats------------------
 export function Services() {
 
+  //fontawesome icons
   const boxIcon = <FontAwesomeIcon icon={faBox} size='7x' />;
   const heartIcon = <FontAwesomeIcon icon={faHeart} size='7x' />;
   const truckIcon = <FontAwesomeIcon icon={faTruck} size='7x' />;

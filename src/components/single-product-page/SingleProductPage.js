@@ -6,15 +6,17 @@ import { API } from '../../global';
 
 export function SingleProductPage() {
 
+  //setting state for single product
   const [singleProduct, setSingleProduct] = useState({});
 
+  //getting product ID from url params
   const { productID } = useParams();
 
-  console.log(productID);
-
-
+  //getting token
   const token = window.localStorage.getItem('token');
 
+
+  //function to get single product info
   const getSingleProduct = () => {
     fetch(`${API}/home/single-product/${productID}`, {
       headers: {
@@ -26,8 +28,11 @@ export function SingleProductPage() {
       .then(data => { console.log(data); setSingleProduct(data.result); });
   };
 
+
+  //setting state for related products
   const [relatedProducts, setRelatedProduct] = useState([]);
 
+  //function to get related products
   const getRelatedProduct = () => {
     fetch(`${API}/home/single-product/${productID}`, {
       headers: {

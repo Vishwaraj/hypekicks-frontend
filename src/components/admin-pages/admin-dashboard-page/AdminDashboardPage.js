@@ -6,6 +6,8 @@ import AdminHeader from '../admin-header/AdminHeader';
 
 export default function AdminDashboardPage() {
 
+
+  //styles for admin buttons
     const adminDashboardButtons = {
         width: "25vw",
         height: "15vh"

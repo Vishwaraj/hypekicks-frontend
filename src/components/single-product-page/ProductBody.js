@@ -9,9 +9,10 @@ import {API} from '../../global'
 
 export function ProductBody({singleProduct}) {
 
+  //setting state for size
   const [size, setSize] = useState(0);
 
-
+  //styles for shoe size select component
   const shoeSizeSelect = {
     width: '8vw',
     marginLeft: '1rem',
@@ -19,13 +20,20 @@ export function ProductBody({singleProduct}) {
     marginBottom: '2rem',
   };
 
+
+  //function to add sneaker to cart
   const addToCart = async () => {
 
+
+      //getting user and token
      const user = window.localStorage.getItem('user');
      const token = window.localStorage.getItem('token');
      
+     //creating the product to be sent
      const productSent = {...singleProduct, size: size, quantity: 1, user: user}
 
+
+     //fetch call
      fetch(`${API}/home/single-product/${singleProduct._id}`, {
       method: "POST",
       body: JSON.stringify(productSent),
@@ -49,6 +57,7 @@ export function ProductBody({singleProduct}) {
 
   const navigate = useNavigate();
 
+  //function to handle change in sneaker size
   const handleSizeChange = (e) => {
    
    setSize(e.target.value);

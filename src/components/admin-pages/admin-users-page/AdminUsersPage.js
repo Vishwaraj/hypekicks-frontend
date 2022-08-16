@@ -1,4 +1,4 @@
-import { Alert, Button, Card, IconButton, Snackbar } from '@mui/material'
+import { Alert, Button, Card, CardActions, CardContent, IconButton, Snackbar } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import './admin-users-page.css';
 import { API } from '../../../global';
@@ -8,10 +8,15 @@ import AdminHeader from '../admin-header/AdminHeader';
 
 export default function AdminUsersPage() {
 
+    //getting admin token
    const adminToken = window.localStorage.getItem('adminToken');
 
+
+   //setting state for users array
    const [users, setUsers] = useState([]);
 
+
+   //function to get all users -->
     const getUsers = () => {
        try {
         fetch(`${API}/admin/users`, {
@@ -27,8 +32,12 @@ export default function AdminUsersPage() {
        }
     }
 
+
+    //state for snackbar
     const [open, setOpen] = useState(false);
 
+
+    //function to delete user -->
     const handleDelete = async (id) => {
         try {
             const result = await fetch(`${API}/admin/users`, {
@@ -54,7 +63,7 @@ export default function AdminUsersPage() {
     }, [])
 
   
-
+  //function to close snackbar
   const handleClose = () => {
     setOpen(false);
   }
@@ -81,8 +90,11 @@ export default function AdminUsersPage() {
 
 export function AdminUsersSideBar() {
 
+    //setting state for snackbar
     const [loggedOut, setLoggedOut] = useState(false);
 
+
+    //function for admin logout -->
     const adminLogout = () => {
         window.localStorage.removeItem('adminToken');
         window.localStorage.removeItem('adminName');
@@ -92,6 +104,8 @@ export function AdminUsersSideBar() {
 
     const navigate = useNavigate();
 
+   
+    //function to close snackbar -->
     const handleClose = () => {
         setLoggedOut(false)
     }
@@ -115,13 +129,16 @@ export function AdminUsersSideBar() {
 
 function UsersObject({user, handleDelete}) {
 
+
+    //styles for user card
     const userCard = {
         width: '20vw',
-        height: '100%'
+        height: '80vh'
     }
 
+    //style for delete button
     const deleteIcon ={
-        float: "right"
+        marginLeft: 'auto'
     }
 
     
@@ -129,6 +146,7 @@ function UsersObject({user, handleDelete}) {
     return (
         <>
             <Card elevation={3} style={userCard}>
+            <CardContent>
             <div className='user-object'>
             <p><strong>Username : </strong>{user.userName}</p>
             <p><strong>First Name : </strong>{user.firstName}</p>
@@ -150,9 +168,13 @@ function UsersObject({user, handleDelete}) {
             </>
             }
             </div>
+            </CardContent>
+
+            <CardActions>
             <IconButton onClick={()=>handleDelete(user._id)} style={deleteIcon}>
             <DeleteIcon style={deleteIcon} color='error' />
             </IconButton>
+            </CardActions>
             </Card>
         </>
     )

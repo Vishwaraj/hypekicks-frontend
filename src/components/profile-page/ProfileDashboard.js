@@ -4,8 +4,8 @@ import { globalContext } from "../../App";
 
 export function ProfileDashboard() {
 
+  //getting user
   const user = window.localStorage.getItem('user');
-
 
   return (
     <div>

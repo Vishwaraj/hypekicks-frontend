@@ -10,6 +10,7 @@ import AdminHeader from '../admin-header/AdminHeader';
 
 
 
+// sneaker validation schema 
 const sneakerValidationSchema = yup.object({
   name: yup.string().required('This is a required field'),
   image: yup.string().required('This is a required field').test('checkValidImageURL', 'Must use valid image URL', value => testImage(value).then(()=>{return true}).catch(err=>{return false})),
@@ -19,6 +20,8 @@ const sneakerValidationSchema = yup.object({
 }); 
 
 
+
+//function to check valid image url -->
 const testImage = (url) => {
 
   return new Promise((resolve, reject) => {
@@ -39,11 +42,14 @@ const testImage = (url) => {
 
 export default function AdminProductsAddSneakerPage() {
 
+
+  //styles for category select
   const categorySelect = {
     width: "41vw"
   }
 
 
+  //formik initialization
   const {handleSubmit, handleChange, handleBlur, values, errors, touched} = useFormik({
     initialValues: {
       name: "",
@@ -59,11 +65,17 @@ export default function AdminProductsAddSneakerPage() {
     }
   })
 
+
+  //getting admin token
   const adminToken = window.localStorage.getItem('adminToken');
 
+
+  //setting snackbar state
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
+
+  //function to add sneaker
   const addSneaker = async (sneaker) => {
     try {
       const result = await fetch(`${API}/admin/products/add-sneakers`, {
@@ -89,6 +101,8 @@ export default function AdminProductsAddSneakerPage() {
   }
 
 
+
+  //function to close snackbar
   const handleClose = () => {
    setOpen(false);
   }
