@@ -108,7 +108,7 @@ export default function AdminSignUpPage() {
         
         <TextField 
         onChange={handleChange} onBlur={handleBlur} value={values.password} name='password' error={touched.password && errors.password ? errors.password : null} helperText={touched.password && errors.password ? errors.password : null}
-        label='Password' type='string' />
+        label='Password' type='password' />
     
         <Button type='submit' variant='outlined' color='success' >Create Admin Account</Button>
     </form>

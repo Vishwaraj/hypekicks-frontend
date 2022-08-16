@@ -92,7 +92,7 @@ export default function AdminLoginPage() {
             
             <TextField
              onChange={handleChange} onBlur={handleBlur} name='password' value={values.password} error={touched.password && errors.password ? errors.password : null} helperText={touched.password && errors.password ? errors.password : null}
-             label='Password' />
+             label='Password' type="password" />
             
             <Button type='submit' variant='outlined' color='inherit'>Log In</Button>
         

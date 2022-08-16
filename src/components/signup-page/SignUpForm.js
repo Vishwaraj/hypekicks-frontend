@@ -88,9 +88,9 @@ export function SignUpForm() {
         name='lastName'
          id="outlined-basic" label="Last Name" variant="outlined" />
         
-        <TextField onChange={handleChange} onBlur={handleBlur} value={values.email} name='email' id="outlined-basic" label="E-mail" variant="outlined" />
+        <TextField onChange={handleChange} onBlur={handleBlur} value={values.email} name='email' id="outlined-basic" label="E-mail" type="email" variant="outlined" />
         
-        <TextField onChange={handleChange} onBlur={handleBlur} value={values.password} name='password' id="outlined-basic" label="Password" variant="outlined" />
+        <TextField onChange={handleChange} onBlur={handleBlur} value={values.password} name='password' id="outlined-basic" label="Password" type="password" variant="outlined" />
         
         <Button type='submit' style={signUpButton} variant="contained" color='success'>Create Account</Button>
       </form>

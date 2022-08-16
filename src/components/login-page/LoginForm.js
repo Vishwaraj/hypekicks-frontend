@@ -107,7 +107,7 @@ export function LoginForm() {
           
           <TextField onChange={handleChange} onBlur={handleBlur} value={values.username} name='username' id="outlined-basic" label="Username" variant="outlined" />
           
-          <TextField onChange={handleChange} onBlur={handleBlur} value={values.password} name='password' id="outlined-basic" label="Password" variant="outlined" />
+          <TextField onChange={handleChange} onBlur={handleBlur} value={values.password} name='password' id="outlined-basic" label="Password" type="password" variant="outlined" />
         </div>
         
         
