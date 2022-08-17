@@ -12,7 +12,7 @@ const userValidationSchema = yup.object({
   firstName: yup.string().required('This is a required field'),
   lastName: yup.string().required('This is a required field'),
   email: yup.string().required('This is a required field'),
-  password: yup.string().required().min(8, 'This is a required field')
+  password: yup.string().required('This is a required field').min(8, 'Minimum 8 Characters required')
 })
 
 export function SignUpForm() {
@@ -79,19 +79,34 @@ export function SignUpForm() {
         
       <TextField onChange={handleChange} onBlur={handleBlur} value={values.userName} 
         name='userName'
-        id="outlined-basic" label="Username" variant="outlined" />
+        id="outlined-basic" label="Username" variant="outlined" 
+        error={touched.userName && errors.userName ? errors.userName : null}
+          helperText={touched.userName && errors.userName ? errors.userName : null}
+        />
 
         <TextField onChange={handleChange} onBlur={handleBlur} value={values.firstName} 
         name='firstName'
-        id="outlined-basic" label="First Name" variant="outlined" />
+        id="outlined-basic" label="First Name" variant="outlined"
+        error={touched.firstName && errors.firstName ? errors.firstName : null}
+        helperText={touched.firstName && errors.firstName ? errors.firstName : null}
+         />
         
         <TextField onChange={handleChange} onBlur={handleBlur} value={values.lastName}
         name='lastName'
-         id="outlined-basic" label="Last Name" variant="outlined" />
+         id="outlined-basic" label="Last Name" variant="outlined" 
+         error={touched.lastName && errors.lastName ? errors.lastName : null}
+         helperText={touched.lastName && errors.lastName ? errors.lastName : null}
+         />
         
-        <TextField onChange={handleChange} onBlur={handleBlur} value={values.email} name='email' id="outlined-basic" label="E-mail" type="email" variant="outlined" />
+        <TextField onChange={handleChange} onBlur={handleBlur} value={values.email} name='email' id="outlined-basic" label="E-mail" type="email" variant="outlined" 
+        error={touched.email && errors.email ? errors.email : null}
+        helperText={touched.email && errors.email ? errors.email : null}
+        />
         
-        <TextField onChange={handleChange} onBlur={handleBlur} value={values.password} name='password' id="outlined-basic" label="Password" type="password" variant="outlined" />
+        <TextField onChange={handleChange} onBlur={handleBlur} value={values.password} name='password' id="outlined-basic" label="Password" type="password" variant="outlined" 
+        error={touched.password && errors.password ? errors.password : null}
+          helperText={touched.password && errors.password ? errors.password : null}
+        />
         
         <Button type='submit' style={signUpButton} variant="contained" color='success'>Create Account</Button>
       </form>
