@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { Alert, Snackbar } from '@mui/material';
 
 const userValidationSchema = yup.object({
+  userName: yup.string().required('This is a required field'),
   firstName: yup.string().required('This is a required field'),
   lastName: yup.string().required('This is a required field'),
   email: yup.string().required('This is a required field'),
@@ -76,7 +77,7 @@ export function SignUpForm() {
     <div className='sign-up-form-body'>
       <form onSubmit={handleSubmit} className='sign-up-form'>
         
-      <TextField onChange={handleChange} onBlur={handleBlur} value={values.username} 
+      <TextField onChange={handleChange} onBlur={handleBlur} value={values.userName} 
         name='userName'
         id="outlined-basic" label="Username" variant="outlined" />
 
