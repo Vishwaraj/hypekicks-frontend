@@ -13,7 +13,7 @@ import { Alert, Snackbar } from '@mui/material';
 //user validation schema -->
 const userValidationSchema = yup.object({
   username: yup.string().required('This field is required'),
-  password: yup.string().required().min(8, 'Password needs to be 8 or more characters')
+  password: yup.string().required('This is a required field').min(8, 'Password needs to be 8 or more characters')
 })
 
 export function LoginForm() {
@@ -105,9 +105,15 @@ export function LoginForm() {
       <form onSubmit={handleSubmit}>
         <div className='form-input'>
           
-          <TextField onChange={handleChange} onBlur={handleBlur} value={values.username} name='username' id="outlined-basic" label="Username" variant="outlined" />
+          <TextField onChange={handleChange} onBlur={handleBlur} value={values.username} name='username' id="outlined-basic" label="Username" variant="outlined" 
+            helperText={touched.username && errors.username ? errors.username : null}
+            error={touched.username && errors.username ? true : false}
+          />
           
-          <TextField onChange={handleChange} onBlur={handleBlur} value={values.password} name='password' id="outlined-basic" label="Password" type="password" variant="outlined" />
+          <TextField onChange={handleChange} onBlur={handleBlur} value={values.password} name='password' id="outlined-basic" label="Password" type="password" variant="outlined" 
+            helperText={touched.password && errors.password ? errors.password : null}
+            error={touched.password && errors.password ? true : false}
+          />
         </div>
         
         
