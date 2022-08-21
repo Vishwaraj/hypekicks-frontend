@@ -54,10 +54,17 @@ function OrderBody({user, sneaker}) {
 
 function ProductOrder({sneaker}) {
 
+  let binaryImage = null;
+  if(sneaker.image) {
+    if(sneaker.image.length > 10000) {
+      binaryImage = `data:image/jpeg;base64,${sneaker.image}`
+    }
+  }
+
 
   return (
     <div className="product-order">
-      <img src={sneaker.image} alt="" />
+      <img src={ binaryImage !== null ? binaryImage : sneaker.image} alt="" />
       <div className="product-order-info">
         <h3>{sneaker.name}</h3>
         <h4>Size: {sneaker.size}</h4>
