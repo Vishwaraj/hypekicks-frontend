@@ -10,7 +10,7 @@ export function ProfileSideBar() {
 
   //style for sidebar buttons
   const sideBarButton = {
-    fontSize: "1.3rem",
+    fontSize: "1.17rem",
   };
 
   //state for snackbar -->

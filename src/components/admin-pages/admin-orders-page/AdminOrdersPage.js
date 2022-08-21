@@ -83,11 +83,19 @@ function UserOrderBody({order}) {
             <p><strong>Sneakers Ordered : </strong></p>
             <div className="orders-card-list" >
             {order.sneakers.map((sneaker) => {
+
+                let binaryImage = null;
+                if(sneaker.image) {
+                    if(sneaker.image.length > 10000) {
+                        binaryImage = `data:image/jpeg;base64,${sneaker.image}`
+                    }
+                }
+
                 return  <Card elevation={5} style={orderCard}>
                 <CardMedia
                 component='img'
                 height= "140"
-                image={sneaker.image}
+                image={binaryImage !== null ? binaryImage : sneaker.image}
                 alt={sneaker.name}
                  />
                  <CardContent>

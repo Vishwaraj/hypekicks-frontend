@@ -87,6 +87,9 @@ export default function AdminProductsAllSneakersPage() {
 
     const currentSneakers = allSneakers.slice(indexOfFirstSneaker, indexOfLastSneaker)
 
+    // const [binary, setBinary] = useState(false);
+    let binaryImage = ''
+
   return (
     <>
     <AdminHeader />
@@ -95,7 +98,7 @@ export default function AdminProductsAllSneakersPage() {
     <div className='admin-products-all-sneakers-body'>
     <h3>All Sneakers</h3>
     {currentSneakers.map((sneaker) => {
-        return <SneakersCard key={sneaker._id} deleteSneaker={deleteSneaker} sneaker={sneaker} />
+        return <SneakersCard binaryImage={binaryImage} key={sneaker._id} deleteSneaker={deleteSneaker} sneaker={sneaker} />
     })}
     <Pagination count={paginationCount} onChange={(event, value)=>setCurrentPage(value)} color='primary' />
     </div>
@@ -113,6 +116,11 @@ export default function AdminProductsAllSneakersPage() {
 
 function SneakersCard({sneaker, deleteSneaker}) {
 
+    let binaryImage = null;
+
+    if(sneaker.image.length > 10000) {
+        binaryImage = `data:image/jpeg;base64,${sneaker.image}`
+    }
 
     //styles for sneakers card
     const sneakerCardStyles = {
@@ -120,18 +128,23 @@ function SneakersCard({sneaker, deleteSneaker}) {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        gap: '2rem'
+        gap: '1rem'
     }
 
     const cardImage ={
-        width: '50vw',
-        height: '50vh'
+        width: '25vw',
+        height: '100%',
+        objectFit: 'cover'
     }
 
     const cardActionStyles = {
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between"
+    }
+
+    const descriptionStyle = {
+        fontSize: '0.9rem'
     }
 
     const navigate = useNavigate();
@@ -142,7 +155,7 @@ function SneakersCard({sneaker, deleteSneaker}) {
                 <CardMedia
                 component='img'
                 style={cardImage}
-                image={sneaker.image}
+                image={binaryImage !== null ? binaryImage : sneaker.image}
                 alt={sneaker.name}
                  />
                  <CardContent>
@@ -152,7 +165,7 @@ function SneakersCard({sneaker, deleteSneaker}) {
                 <h4>Price : Rs {sneaker.price}</h4>
                 <h4>Category : {sneaker.category}</h4>
                 </div>
-                <p><strong>Description</strong> : {sneaker.description}</p>
+                <p style={descriptionStyle} ><strong>Description</strong> : {sneaker.description}</p>
                 <CardActions style={cardActionStyles} >
                     <IconButton onClick={()=>navigate(`/admin/products/update-sneakers/${sneaker._id}`)} >
                     <EditIcon color='success' />

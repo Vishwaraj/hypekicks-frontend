@@ -17,14 +17,14 @@ export function ProfileAccountForm({initialForm}) {
 
   //style for textfield
   const accDetailsName = {
-    width: "30vw",
+    width: "29vw",
   };
 
 
   //style for form submit button
   const accDetailsButton = {
     width: "100%",
-    marginTop: "2rem",
+    marginTop: "1.8rem",
   };
 
 

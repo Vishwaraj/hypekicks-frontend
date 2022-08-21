@@ -9,7 +9,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HomeIcon from '@mui/icons-material/Home';
 
-
+ 
 // --------------------header component------------------------
 export function Header() {
 
@@ -40,18 +40,18 @@ const token = window.localStorage.getItem('token');
         {token ? <>
 
           <IconButton color='inherit' onClick={() => navigate('/home')}>
-          <HomeIcon fontSize="large" />
+          <HomeIcon fontSize="medium" />
         </IconButton>
                 
         <IconButton color='inherit' onClick={() => navigate('/cart')} aria-label="Example">
         <Badge badgeContent={cart.length} color="primary">
-        <ShoppingCartIcon fontSize="large" />
+        <ShoppingCartIcon fontSize="medium" />
         </Badge>
         </IconButton>
         
         
         <IconButton color='inherit' onClick={() => navigate('/profile-page')}>
-          <AccountCircleIcon fontSize="large" />
+          <AccountCircleIcon fontSize="medium" />
         </IconButton>
 
         </>  

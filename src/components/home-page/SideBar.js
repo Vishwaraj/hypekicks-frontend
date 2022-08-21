@@ -12,7 +12,7 @@ export function SideBar({handleClick, setClicked, clicked}) {
   //styles for text color
   const textColor = {
     color: 'white',
-    fontSize: '1.5rem'
+    fontSize: '1.4rem'
   };
 
   const navigate = useNavigate();
@@ -55,7 +55,7 @@ export function SearchBar({setSearchTerm, searchTerm, handleSearch}) {
   return (
     <div>
       <form className='search-bar'>
-        <TextField style={{width: "30rem"}} value={searchTerm} onChange={(e)=>setSearchTerm(e.target.value)} type='text' id="outlined-basic" variant="outlined" />
+        <TextField style={{width: "25rem"}} value={searchTerm} onChange={(e)=>setSearchTerm(e.target.value)} type='text' id="outlined-basic" variant="outlined" />
 
         <Button onClick={(event)=>handleSearch(event,searchTerm)} type='submit' variant="outlined" color='inherit'>Search</Button>
       </form>
@@ -66,14 +66,20 @@ export function SearchBar({setSearchTerm, searchTerm, handleSearch}) {
 
 function SingleProduct({sneaker}) {
 
+  let binaryImage = null
+  if(sneaker.image.length > 10000) {
+  binaryImage = `data:image/jpeg;base64,${sneaker.image}`
+  }
+
   const navigate = useNavigate();
 
 
   //style for cursor
   const cursorStyle = {
     cursor: 'pointer',
-    marginTop: 0,
-    marginBottom: 0,
+    marginTop: '-1rem',
+    marginBottom: '-0.5rem',
+    fontSize: '0.9rem'
   }
 
   
@@ -84,12 +90,12 @@ function SingleProduct({sneaker}) {
         <CardMedia
           component="img"
           height="250"
-          image={sneaker.image} alt='nike-shoes' 
-          style={{objectFit: "contain"}}
+          image={binaryImage !== null ? binaryImage : sneaker.image} alt='nike-shoes' 
+          style={{objectFit: "contain", marginTop: '-1rem'}}
           />
         <CardContent>
           <h4 style={cursorStyle} onClick={() => {navigate('/home/single-product/'+sneaker._id);}}>{sneaker.name}</h4>
-          <h5 style={{marginBottom: 0}}>Rs {sneaker.price}</h5>
+          <h5 style={{marginBottom: 0, fontSize: '0.8rem'}}>Rs {sneaker.price}</h5>
         </CardContent>
       </Card>
     </div>

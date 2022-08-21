@@ -23,7 +23,7 @@ const addressValidationSchema = yup.object({
       phone: yup.number().required().min(10, 'Invalid Phone Number, atleast 10 digits required')
 })
 
-
+ 
 
 export function ProfileAddressForm() {
 
@@ -42,7 +42,7 @@ export function ProfileAddressForm() {
   };
 
   const profileAddressInputs = {
-    width: '100%'
+    width: '100%',
   };
 
   const nameStyles = {

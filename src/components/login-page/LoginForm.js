@@ -26,8 +26,9 @@ export function LoginForm() {
   //style for loginButton
   const loginButton = {
     width: '100%',
-    marginTop: '0.5rem'
+    marginTop: '0.2rem'
   }
+
 
 
   //formik initialisation -->
@@ -121,7 +122,7 @@ export function LoginForm() {
           <Button type='submit' style={loginButton} variant="outlined" color='inherit' >Log In</Button>
         </div>
       </form>
-      <h3>Don't have an account?</h3>
+      <h3 style={{marginTop: '1.2rem'}}>Don't have an account?</h3>
       <div className='login-option-buttons'>
         {/* <Button variant="outlined" color='inherit'>Log in with Google</Button>
         <Button variant="outlined" color='inherit'>Log in with FaceBook</Button> */}

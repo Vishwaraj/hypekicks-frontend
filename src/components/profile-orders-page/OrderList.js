@@ -53,6 +53,8 @@ function OrderBody({user, sneaker}) {
 }
 
 function ProductOrder({sneaker}) {
+
+
   return (
     <div className="product-order">
       <img src={sneaker.image} alt="" />
@@ -71,10 +73,10 @@ function ProfileOrderShipping({user}) {
 
   return (
     <div className="shipping-info">
-      <h3>Shipping to :</h3>
-      <h3>{user}</h3>
-      <h3>Address : Default Address</h3>
-      <h3>Arriving in : {Math.floor(Math.random() * 10) + 1} days</h3>
+      <h4>Shipping to :</h4>
+      <h4>{user}</h4>
+      <h4>Address : Default Address</h4>
+      <h4>Arriving in : {Math.floor(Math.random() * 10) + 1} days</h4>
     </div>
   );
 }

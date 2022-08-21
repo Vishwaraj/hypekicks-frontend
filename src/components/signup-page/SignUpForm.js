@@ -26,7 +26,7 @@ export function SignUpForm() {
   //style for signup button
   const signUpButton = {
     height: '8vh',
-    marginTop: '1rem'
+    // marginTop: '1rem'
   };
 
 

@@ -7,14 +7,15 @@ import * as yup from 'yup';
 import { API } from '../../../global';
 import { useNavigate } from 'react-router-dom';
 import AdminHeader from '../admin-header/AdminHeader';
+import UploadFileIcon from '@mui/icons-material/UploadFile';
 
 
 
 // sneaker validation schema 
 const sneakerValidationSchema = yup.object({
   name: yup.string().required('This is a required field'),
-  image: yup.string().required('This is a required field').test('checkValidImageURL', 'Must use valid image URL', value => testImage(value).then(()=>{return true}).catch(err=>{return false})),
-  description: yup.string().required('This is a required field').min(400, 'Minimum 400 characters required'),
+  image: yup.mixed().required('This is a required field'),
+  description: yup.string().required('This is a required field').min(300, 'Minimum 400 characters required'),
   category: yup.string().required('This is a required field'),
   price: yup.number().required('This is a required field')
 }); 
@@ -50,7 +51,7 @@ export default function AdminProductsAddSneakerPage() {
 
 
   //formik initialization
-  const {handleSubmit, handleChange, handleBlur, values, errors, touched} = useFormik({
+  const {handleSubmit, handleChange, handleBlur, values, errors, touched, setFieldValue, setFieldTouched } = useFormik({
     initialValues: {
       name: "",
       image: "",
@@ -61,7 +62,16 @@ export default function AdminProductsAddSneakerPage() {
     validationSchema: sneakerValidationSchema,
     onSubmit: (sneaker) => {
       console.log('this is the added sneaker', sneaker);
-      addSneaker(sneaker)
+
+      const formData = new FormData();
+      formData.append('name', values.name)
+      formData.append('image', values.image)
+      formData.append('description', values.description)
+      formData.append('category', values.category)
+      formData.append('price', values.price)
+
+
+      addSneaker(formData);
     }
   })
 
@@ -78,11 +88,12 @@ export default function AdminProductsAddSneakerPage() {
   //function to add sneaker
   const addSneaker = async (sneaker) => {
     try {
+
+      console.log('This is the function sneaker', sneaker)
       const result = await fetch(`${API}/admin/products/add-sneakers`, {
         method: "POST",
-        body: JSON.stringify(sneaker),
-        headers:{
-          "Content-type": "application/json",
+        body: sneaker,
+        headers: {
           "admin-auth-token": adminToken
         }
       })
@@ -126,9 +137,19 @@ export default function AdminProductsAddSneakerPage() {
             error={touched.price && errors.price ? true : false} helperText={touched.price && errors.price ? errors.price : null}
             label='Sneaker Price' type='number' />
             
-            <TextField onChange={handleChange} onBlur={handleBlur} name='image' value={values.image}
-            error={touched.image && errors.image ? true : false} helperText={touched.image && errors.image ? errors.image : null}
-            label='Sneaker Image' type='string' />
+            <div className='upload-image-area'>
+            <label className='upload-image-label'>
+            <input
+                 type="file"
+                 className='upload-image-input'
+                 onChange={(event) => {
+                 setFieldValue('image', event.currentTarget.files[0]);
+                 }} 
+                 onBlur={handleBlur} name='image'
+               />
+            </label>
+            </div>
+            
             
             <div className='add-sneakers-category-select'>
             <InputLabel >Select Category</InputLabel>

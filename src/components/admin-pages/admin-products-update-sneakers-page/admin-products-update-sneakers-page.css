@@ -8,3 +8,27 @@
     flex-direction: row;
     gap: 5rem;
 }
+
+input[type="file"] {
+    background: white;
+    border-radius: 50px;
+    box-shadow: 2px 2px 5px grey;
+    outline: none;
+}
+
+::-webkit-file-upload-button {
+    color: white;
+    background: lightskyblue;
+    padding: 1rem;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 1px 1px #6b4559;
+    outline: none;
+    cursor: pointer;
+}
+
+
+
+.upload-image-label {
+    cursor: pointer;
+}

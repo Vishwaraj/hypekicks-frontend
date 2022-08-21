@@ -93,6 +93,9 @@ export function AdminUsersSideBar() {
     //setting state for snackbar
     const [loggedOut, setLoggedOut] = useState(false);
 
+    const adminSideBarStyle = {
+        width: '20vw'
+    }
 
     //function for admin logout -->
     const adminLogout = () => {
@@ -113,9 +116,9 @@ export function AdminUsersSideBar() {
     return (
         <>
             <div className='admin-users-sidebar'>
-            <Button onClick={()=>navigate('/admin/users')} variant='text' color='inherit' ><h2>Users</h2></Button>
-            <Button onClick={()=>navigate('/admin/orders')} variant='text' color='inherit' ><h2>Orders</h2></Button>
-            <Button onClick={()=>adminLogout()} variant='text' color='inherit' ><h2>Log Out</h2></Button>
+            <Button style={adminSideBarStyle} onClick={()=>navigate('/admin/users')} variant='text' color='inherit' ><h2>Users</h2></Button>
+            <Button style={adminSideBarStyle} onClick={()=>navigate('/admin/orders')} variant='text' color='inherit' ><h2>Orders</h2></Button>
+            <Button style={adminSideBarStyle} onClick={()=>adminLogout()} variant='text' color='inherit' ><h2>Log Out</h2></Button>
             </div>
             <Snackbar open={loggedOut} autoHideDuration={6000} onClose={handleClose} >
                 <Alert onClose={handleClose} severity='success' variant='filled'>
@@ -133,7 +136,7 @@ function UsersObject({user, handleDelete}) {
     //styles for user card
     const userCard = {
         width: '20vw',
-        height: '80vh'
+        height: '90vh'
     }
 
     //style for delete button

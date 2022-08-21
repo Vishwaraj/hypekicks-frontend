@@ -76,7 +76,7 @@ export default function AdminLoginPage() {
         setOpen(false);
     }
 
-
+ 
   return (
     <>
     <AdminHeader/>

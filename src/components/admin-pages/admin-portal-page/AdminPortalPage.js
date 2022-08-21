@@ -14,7 +14,7 @@ export default function AdminPortalPage() {
     const adminPortalButtons = {
         height: "10vh",
         width: "20vw"
-    }
+    }  
 
     //getting admin token
     const adminToken = window.localStorage.getItem('adminToken');

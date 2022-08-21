@@ -1,7 +1,7 @@
 
 
 .admin-products-page {
-    margin-top: 10rem;
+    margin-top: 9rem;
     margin-bottom: 7rem;
     margin-left: 3rem;
     margin-right: 5rem;
@@ -13,7 +13,7 @@
 .admin-products-sidebar {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
     border-right: 1px solid grey;
     padding-right: 2rem;
     width: 15vw;

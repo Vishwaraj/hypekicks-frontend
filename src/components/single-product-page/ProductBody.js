@@ -2,12 +2,20 @@ import Button from '@mui/material/Button';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import {API} from '../../global'
 
 
 export function ProductBody({singleProduct}) {
+
+let binaryImage = null;
+if(singleProduct.image) {
+  if(singleProduct.image.length > 10000) {
+    binaryImage = `data:image/jpeg;base64,${singleProduct.image}`
+  }
+}
+
 
   //setting state for size
   const [size, setSize] = useState(0);
@@ -67,7 +75,7 @@ export function ProductBody({singleProduct}) {
 
   return (
     <div className="product-body">
-      <img className="single-product-image" src={singleProduct.image} alt="" />
+      <img className="single-product-image" src={binaryImage !== null ? binaryImage : singleProduct.image} alt="" />
 
       <div className="single-information">
         <h2>{singleProduct.name}</h2>

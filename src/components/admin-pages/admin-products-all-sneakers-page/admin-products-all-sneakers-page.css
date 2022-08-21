@@ -1,7 +1,7 @@
 
 
 .admin-products-all-sneakers-page {
-    margin-top: 10rem;
+    margin-top: 9rem;
     margin-left: 3rem;
     display: flex;
     flex-direction: row;
@@ -13,4 +13,8 @@
     display: flex;
     flex-direction: column;
     gap: 3rem;
+}
+
+.sneaker-card-data > h4 {
+    font-size: 0.9rem;
 }

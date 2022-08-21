@@ -24,6 +24,13 @@ export function CartProductList({ fetchCart, setTotal}) {
 
 function CartProductSingle({sneaker, fetchCart, cart, setTotal}) {
 
+  let binaryImage = null;
+  if(sneaker.image) {
+    if(sneaker.image.length > 10000) {
+      binaryImage = `data:image/jpeg;base64,${sneaker.image}`
+    }
+  }
+
   //style for cart shoe quantity input
   const cartShoeInput = {
     width: '5vw',
@@ -101,7 +108,7 @@ function CartProductSingle({sneaker, fetchCart, cart, setTotal}) {
       <IconButton onClick={()=>removeProduct()}>
         <CloseIcon  />
       </IconButton>
-      <img src={sneaker.image} alt={sneaker.name} />
+      <img src={binaryImage !== null ? binaryImage :  sneaker.image} alt={sneaker.name} />
       <h2>{sneaker.name}</h2>
       <TextField defaultValue={sneaker.quantity} onChange={(e)=>handleCountChange(e)} inputProps={{ min, max }} style={cartShoeInput} type='number' />
       <h3>₹{totalPrice}</h3>

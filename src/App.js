@@ -87,6 +87,8 @@ function App() {
       .catch((error) => console.log(error));
   };
 
+  // `data:image/jpeg;base64,${data}`
+
   return (
     <>
       <div>

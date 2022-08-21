@@ -27,7 +27,7 @@ export function CartPage() {
       <h1 className="cart-title">Cart</h1>
       <div className="cart-body">
         {cart.length === 0 ? (
-          <h1 style={{ marginRight: "36rem", marginBottom: '15rem' }}>Cart is empty</h1>
+          <h1 style={{ marginLeft: '0.5rem', marginBottom: '15rem', marginTop: 0 }}>Cart is empty</h1>
         ) : (
           <>
             <CartProductList fetchCart={fetchCart} setTotal={setTotal} />

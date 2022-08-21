@@ -29,7 +29,7 @@ export function CartBilling({total, setTotal}) {
 
 
       <div class="total">
-        <h3>Total:</h3>
+        <h3>Total :</h3>
         <h3>₹{total}</h3>
       </div>
       {/* <button class="btn btn-dark"><a href="cart-address.html">Proceed to Checkout</a></button> */}

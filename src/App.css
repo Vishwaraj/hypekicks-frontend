@@ -3,12 +3,12 @@
 
 .title {
   color: white;
-  padding-left: 5rem;
+  padding-left: 4.3rem;
   letter-spacing: 2px;
   font-weight: normal;
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
+  font-size: 2.3rem;
+  margin-bottom: 0.9rem;
+  margin-top: 0.9rem;
 }
 
 .title:hover {
@@ -18,8 +18,8 @@
 .header-buttons {
   display: flex;
   flex-direction: row;
-  gap: 1rem;
-  padding-right: 4rem;
+  gap: 1.5rem;
+  padding-right: 3rem;
 
 }
 
@@ -33,7 +33,7 @@
 }
 
 .carousel-images {
-  margin-top: 5rem;
+  margin-top: 4.5rem;
 }
 
 .info-blocks {
@@ -77,22 +77,35 @@
   width: 100%;
 }
 
+.footer > h3 {
+  font-size: 1.05rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  padding-top: 0.5rem;
+}
+
 .footer > p {
   margin-bottom: 0;
   padding-bottom: 1.5rem;
+  font-size: 0.9rem;
 }
 
 
 /* styles for login page */
 
 .login-page {
-  margin-top: 10rem;
-  margin-left: 5rem;
+  margin-top: 9rem;
+  margin-left: 4.5rem;
   margin-bottom: 4rem;
-  margin-right: 5rem;
+  margin-right: 4rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.login-page > img {
+  width: 33vw;
+  height: 73vh;
 }
 
 .form-input {
@@ -114,12 +127,12 @@
   flex-direction: column;
   gap: 1rem;
   border-bottom: 1px solid grey;
-  padding-bottom: 2rem;
+  padding-bottom: 1.7rem;
 }
 
 .login-form {
   margin-right: 5rem;
-  padding: 2rem 1rem 1rem 1rem;
+  padding: 0.2rem 1rem 1rem 1rem;
   border-radius: 1rem;
   /* box-shadow: 0 0 1rem #ccc; */
 }
@@ -138,17 +151,21 @@
 /* styles for sign up page */
 
 .sign-up-page {
-  margin-top: 7rem;
-  margin-left: 22rem;
+  margin-top: 6.6rem;
+  margin-left: 21rem;
   margin-right: 5rem;
   margin-bottom: 4rem;
+}
+
+.sign-up-page > h1 {
+  font-size: 1.7rem;
 }
 
 .sign-up-form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-  margin-top: 3.5rem;
+  gap: 1.2rem;
+  margin-top: 2rem;
   width: 50vw;
 }
 
@@ -161,7 +178,7 @@
   background-image: linear-gradient(to bottom, #212529, #525458, #88898c, #c2c2c4, #ffffff);
   margin-left: 0;
   padding-left: 0;
-  margin-top: 5rem;
+  margin-top: 4rem;
 }
 
 .sidebar-buttons {
@@ -186,11 +203,11 @@
 }
 
 .search-bar {
-  margin-top: 7.5rem;
+  margin-top: 7rem;
   display: flex;
   flex-direction: row;
   gap: 1rem;
-  margin-left: 12rem;
+  margin-left: 11rem;
 }
 
 .products-list {
@@ -202,10 +219,10 @@
 }
 
 .search-product-area {
-  margin-left: 3rem;
+  margin-left: 2.5rem;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2.5rem;
   padding-bottom: 5rem;
 }
 
@@ -216,8 +233,8 @@
 /* styles for single product page */
 
 .single-product-image {
-  height: 70vh;
-  width: 35vw;
+  height: 75vh;
+  width: 40vw;
   object-fit: contain;
 }
 
@@ -225,7 +242,7 @@
   display: flex;
   flex-direction: row;
   margin-top: 8rem;
-  margin-left: 6rem;
+  margin-left: 4rem;
   margin-right: 4rem;
 }
 
@@ -238,12 +255,12 @@
 }
 
 .single-information > h2, h3 {
-  margin-bottom: 1rem
+  margin-bottom: 0.5rem
 }
 
 .single-information > p {
   line-height: 2rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .shoe-size {
@@ -262,7 +279,7 @@
 }
 
 .related-products {
-  margin-top: 3rem;
+  margin-top: 7rem;
   margin-left: 6rem;
   margin-right: 7rem;
   margin-bottom: 4rem;
@@ -276,7 +293,7 @@
 }
 
 .related-single-product {
-  width: 16.5vw;
+  width: 17vw;
 }
 
 
@@ -285,9 +302,9 @@
 .cart-body {
   display: flex;
   flex-direction: row;
-  margin-left: 5rem;
+  margin-left: 4.1rem;
   margin-right: 2rem;
-  margin-top: 2rem;
+  margin-top: -0.5rem;
   margin-bottom: 5rem;
 }
 
@@ -301,9 +318,13 @@
   gap: 1rem;
 }
 
+.cart-product > h2 {
+  font-size: medium;
+}
+
 .cart-product > img {
-  width: 10vw;
-  height: 20vh;
+  width: 9vw;
+  height: 19vh;
 }
 
 .cart-product > input {
@@ -319,11 +340,11 @@
 } */  
 
 .cart-billing {
-  margin-left: 8rem;
-  width: 25vw;
+  margin-left: 7rem;
+  width: 22vw;
   background-color: #f9f9f9;
   padding: 0.5rem 1.5rem;
-  height: 55vh;
+  height: 53vh;
   margin-top: 2rem;
   border: 1px solid lightgrey;
 }
@@ -340,14 +361,14 @@
 }
 
 .cart-title {
-  margin-left: 5.4rem;
-  margin-top: 8rem;
+  margin-left: 4.5rem;
+  margin-top: 7rem;
   font-size: 2.5rem;
 }
 
 .cart-proceed-button {
-  margin-left: 5rem;
-  margin-top: 2rem;
+  margin-left: 2.8rem;
+  margin-top: -0.5rem;
 }
 
 
@@ -360,9 +381,9 @@
 .cart-address-body {
   display: flex;
   flex-direction: row;
-  margin-left: 5rem;
-  margin-right: 5rem;
-  margin-top: 3rem;
+  margin-left: 4.5rem;
+  margin-right: 4.5rem;
+  margin-top: 2.4rem;
   margin-bottom: 4rem;
 }
 
@@ -403,25 +424,26 @@
 }
 
 .cart-address-proceed-button {
-  margin-left: 7rem;
+  margin-left: 6rem;
   margin-top: 2rem;
 }
 
 
 #cart-address-title {
-  margin-left: 5rem;
-  margin-top: 8rem;
+  margin-left: 4.5rem;
+  margin-top: 7rem;
 }
 
 .cart-address-form-details {
   /* border: 1px solid grey; */
   width: 48vw;
+  /* margin-left: -1rem; */
 }
 
 .cart-address-form, .street-address {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.3rem;
 }
 
 .address-form-name {
@@ -462,7 +484,7 @@
 
 .order-placed-modal {
   text-align: center;
-  padding-top: 11rem;
+  padding-top: 9.5rem;
   padding-bottom: 5rem;
 }
 
@@ -472,27 +494,27 @@
 .profile-body {
   display: flex;
   flex-direction: row;
-  margin-top: 8rem;
+  margin-top: 7.2rem;
   margin-left: 1rem;
-  margin-right: 4rem;
+  margin-right: 3rem;
 }
 
 .profile-sidebar {
   /* margin-top: -3rem; */
   border-right: 1px solid grey;
-  padding-right: 2rem;
+  padding-right: 1rem;
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
   align-items: flex-start;
-  padding-left: 1rem;
+  padding-left: 0.8rem;
   margin-bottom: 10rem;
-  width: 17vw;
+  width: 17.1vw;
 }
 
 .profile-area {
-  margin-left: 3rem;
+  margin-left: 2rem;
   /* margin-top: 2rem; */
   margin-bottom: 5rem;
 }
@@ -532,11 +554,13 @@
 .product-order-info > h3 {
   margin-left: 2rem;
   margin-bottom: 1rem;
+  font-size: 1.05rem;
 }
 
 .product-order-info > h4 {
   margin-top: 0.8rem;
   margin-left: 2rem;
+  font-size: 0.9rem;
 }
 
 .shipping-info {
@@ -544,8 +568,8 @@
   border: 1px solid lightgray;
   width: 22vw;
   padding-left: 2.5rem;
-  padding-top: 1rem;
-  padding-bottom: 0.1rem;
+  /* padding-top: 1rem; */
+  /* padding-bottom: 0.1rem; */
   margin-left: 2rem;
 }
 
