@@ -14,7 +14,7 @@ import AdminHeader from '../admin-header/AdminHeader';
 const sneakerValidationSchema = yup.object({
     name: yup.string().required('This is a required field'),
     image: yup.mixed().required('This is a required field'),
-    description: yup.string().required('This is a required field').min(400, 'Minimum 400 characters required'),
+    description: yup.string().required('This is a required field').min(300, 'Minimum 400 characters required'),
     category: yup.string().required('This is a required field'),
     price: yup.number().required('This is a required field')
   }); 
