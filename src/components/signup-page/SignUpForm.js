@@ -11,7 +11,7 @@ const userValidationSchema = yup.object({
   userName: yup.string().required('This is a required field'),
   firstName: yup.string().required('This is a required field'),
   lastName: yup.string().required('This is a required field'),
-  email: yup.string().required('This is a required field'),
+  email: yup.string().email().required('This is a required field'),
   password: yup.string().required('This is a required field').min(8, 'Minimum 8 Characters required')
 })
 
