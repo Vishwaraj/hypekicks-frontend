@@ -32,6 +32,7 @@ import AdminProductsPage from "./components/admin-pages/admin-products-page/Admi
 import AdminProductsAllSneakersPage from "./components/admin-pages/admin-products-all-sneakers-page/AdminProductsAllSneakersPage";
 import AdminProductsAddSneakerPage from "./components/admin-pages/admin-products-add-sneakers-page/AdminProductsAddSneakerPage";
 import AdminProductsUpdateSneakersPage from "./components/admin-pages/admin-products-update-sneakers-page/AdminProductsUpdateSneakersPage";
+import { SingleUserPage } from "./components/admin-pages/admin-users-page/SingleUserPage";
 
 
 
@@ -42,7 +43,6 @@ export const globalContext = createContext();
 function App() {
   //cart context here
   const [cart, setCart] = useState([]);
-  //  const [userAddress, setUserAddress] = useState({})
   const [user, setUser] = useState({});
 
   const fetchCart = () => {
@@ -133,6 +133,7 @@ function App() {
             <Route path='/admin/login' element={<AdminLoginPage />} />
             <Route path='/admin/dashboard' element={<AdminDashboardPage />} />
             <Route path='/admin/users' element={<AdminUsersPage />} />
+            <Route path='/admin/users/:username' element={<SingleUserPage />} />
             <Route path='/admin/orders' element={<AdminOrdersPage />} />
             <Route path='/admin/products' element={<AdminProductsPage />} />
             <Route path='/admin/products/all-sneakers' element={<AdminProductsAllSneakersPage />} />

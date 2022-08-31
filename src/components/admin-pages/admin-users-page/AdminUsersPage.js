@@ -2,9 +2,15 @@ import { Alert, Button, Card, CardActions, CardContent, IconButton, Snackbar } f
 import React, { useEffect, useState } from 'react'
 import './admin-users-page.css';
 import { API } from '../../../global';
-import DeleteIcon from '@mui/icons-material/Delete';
 import {useNavigate} from 'react-router-dom';
 import AdminHeader from '../admin-header/AdminHeader';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+
 
 export default function AdminUsersPage() {
 
@@ -34,7 +40,6 @@ export default function AdminUsersPage() {
 
 
     //state for snackbar
-    const [open, setOpen] = useState(false);
 
 
     //function to delete user -->
@@ -51,7 +56,6 @@ export default function AdminUsersPage() {
 
             const data = await result.json();
             getUsers();
-            setOpen(true);
             console.log(data);
         } catch (error) {
             console.log(error);
@@ -64,9 +68,9 @@ export default function AdminUsersPage() {
 
   
   //function to close snackbar
-  const handleClose = () => {
-    setOpen(false);
-  }
+
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -74,16 +78,35 @@ export default function AdminUsersPage() {
         <div className='admin-users-page'>
         <AdminUsersSideBar />
         <div className='admin-users-page-body' >
-        {users.map((user) => {
+        <Table style={{width: '67vw', border: '1px solid grey'}} >
+            <TableHead>
+                <TableRow>
+                    <TableCell style={{backgroundColor: '#212529', color:'white'}}>First Name</TableCell>
+                    <TableCell style={{backgroundColor: '#212529', color:'white'}} >Last Name</TableCell>
+                    <TableCell style={{backgroundColor: '#212529', color:'white'}} >Username</TableCell>
+                    <TableCell style={{backgroundColor: '#212529', color:'white'}} >Options</TableCell>
+                </TableRow>
+            </TableHead>
+            <TableBody>
+                {users.map((user) => {
+                    return <TableRow>
+                        <TableCell>{user.firstName}</TableCell>
+                        <TableCell>{user.lastName}</TableCell>
+                        <TableCell>{user.userName}</TableCell>
+                        <TableCell><Button 
+                        onClick={()=>navigate(`/admin/users/${user.userName}`)}
+                         variant='contained' color='primary' >View More</Button></TableCell>
+                    </TableRow>
+                })}
+            </TableBody>
+        </Table>
+
+        {/* {users.map((user) => {
             return <UsersObject handleDelete={handleDelete} user={user} />
-        })}
+        })} */}
         </div>
         </div>
-        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose} >
-            <Alert elevation={5} variant='filled' severity='warning' onClose={handleClose}>
-                User has been deleted successfully!
-            </Alert>
-        </Snackbar>
+
     </>
   )
 }
@@ -130,55 +153,3 @@ export function AdminUsersSideBar() {
 }
 
 
-function UsersObject({user, handleDelete}) {
-
-
-    //styles for user card
-    const userCard = {
-        width: '20vw',
-        height: '90vh'
-    }
-
-    //style for delete button
-    const deleteIcon ={
-        marginLeft: 'auto'
-    }
-
-    
-
-    return (
-        <>
-            <Card elevation={3} style={userCard}>
-            <CardContent>
-            <div className='user-object'>
-            <p><strong>Username : </strong>{user.userName}</p>
-            <p><strong>First Name : </strong>{user.firstName}</p>
-            <p><strong>Last Name : </strong>{user.lastName}</p>
-            <p><strong>E-mail : </strong>{user.email}</p>
-            {user.address ? 
-            <>
-            <p><strong>Address : </strong></p>
-            <p><strong>Street Address : </strong>{user.address.streetAddress}</p>
-            <p><strong>Street Address Continued : </strong>{user.address.streetAddressContd}</p>
-            <p><strong>City : </strong>{user.address.city}</p>
-            <p><strong>State : </strong>{user.address.state}</p>
-            <p><strong>Pin Code : </strong>{user.address.zipcode}</p>
-            <p><strong>Phone : </strong>{user.address.phone}</p>
-            </>
-            :
-            <>
-            <p><strong>Address : </strong>Address Not Added Yet</p>  
-            </>
-            }
-            </div>
-            </CardContent>
-
-            <CardActions>
-            <IconButton onClick={()=>handleDelete(user._id)} style={deleteIcon}>
-            <DeleteIcon style={deleteIcon} color='error' />
-            </IconButton>
-            </CardActions>
-            </Card>
-        </>
-    )
-}

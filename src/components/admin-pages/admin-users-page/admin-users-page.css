@@ -29,3 +29,57 @@
     gap: 3rem;
     margin-bottom: 5rem;
 }
+
+/* Single user page styles */
+
+.single-user-page {
+    margin-top: 9rem;
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+    margin-bottom: 5rem;
+}
+
+.username-delete {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.single-user-body {
+    width: 65vw;
+}
+
+.margin-fix {
+    margin-top: 0;
+}
+
+.product-card-fix {
+    margin-bottom: 0.5rem;
+}
+
+.orders-area {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.orders-list {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+}
+
+.delete-modal {
+    margin-top: 2rem;
+    height: 20vh;
+    text-align: center;
+}
+
+.delete-button {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin-left: 6.9rem;
+}

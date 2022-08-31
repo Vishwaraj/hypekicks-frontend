@@ -4,10 +4,12 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { NavLink, useNavigate, useParams } from "react-router-dom";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import Pagination from '@mui/material/Pagination';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
 
-export function SideBar({handleClick, setClicked, clicked}) {
+export function SideBar({handleClick, setClicked, clicked, sort, handleSort }) {
 
   //styles for text color
   const textColor = {
@@ -21,7 +23,7 @@ export function SideBar({handleClick, setClicked, clicked}) {
   //getting category from url params
   const {category} = useParams()
 
-  
+
 
   return (
 
@@ -45,6 +47,20 @@ export function SideBar({handleClick, setClicked, clicked}) {
         <Button style={textColor}  variant="text" onClick={(event)=>{handleClick(event); }} value={'all'} color='inherit'
         disabled={category === 'all' ? true : false}
         >All</Button>
+
+        <FormControl style={{marginTop: '1rem'}} >
+        <InputLabel style={{color: 'white'}} >Sort by Price</InputLabel>
+        <Select
+        label="Sort by Price"
+        value={sort}
+        onChange={(e)=>handleSort(e.target.value)}
+        style={{color: 'white', width: "12vw"}}
+         >
+          <MenuItem value='low-to-high' >Low to High</MenuItem>
+          <MenuItem value='high-to-low' >High to Low</MenuItem>
+        </Select>
+        </FormControl>
+        
 
       </div>
     </div>
@@ -105,10 +121,37 @@ function SingleProduct({sneaker}) {
 
 export function ProductsList({homeProducts, searchedProducts}) {
 
+  //state for pagination 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [sneakersPerPage] = useState(12);
+
+
+  let paginationCount;
+  let currentSneakers;
+  const indexOfLastSneaker = currentPage * sneakersPerPage;
+  const indexOfFirstSneaker = indexOfLastSneaker - sneakersPerPage;
+  //sneakers per page
+
+
+    if(searchedProducts !== null) {
+      paginationCount = Math.ceil(searchedProducts.length/sneakersPerPage);
+      currentSneakers = searchedProducts.slice(indexOfFirstSneaker, indexOfLastSneaker)
+      
+    } else {
+      paginationCount = Math.ceil(homeProducts.length/sneakersPerPage);
+      currentSneakers = homeProducts.slice(indexOfFirstSneaker, indexOfLastSneaker)  
+      
+    }
+  
+
+
+
+
 
   //conditional rendering by checking whether searched products exist
   return (
     <div className='products-list'>
+{/* 
     { 
       searchedProducts ? 
      
@@ -121,8 +164,20 @@ export function ProductsList({homeProducts, searchedProducts}) {
   })
 
   
+  } */}
+
+  { 
+   
+   currentSneakers ?  
+    currentSneakers.map((sneaker)=> {
+    return <SingleProduct key={sneaker._id} sneaker={sneaker} />
+  })
+   : <h1>Loading...</h1>
+  
   }
 
+
+<Pagination count= {paginationCount} onChange={(event, value) => {setCurrentPage(value)}} />
     </div>
   );
 }

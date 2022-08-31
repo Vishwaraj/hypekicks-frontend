@@ -19,6 +19,7 @@ export function SignUpForm() {
 
   //setting state for snackbar
   const [signedIn, setSignedIn] = useState(false);
+  const [disable, setDisable] = useState(false);
 
   const navigate = useNavigate();
 
@@ -58,7 +59,8 @@ export function SignUpForm() {
     })
     .then(result => result.json())
     .then(data => {console.log('this is the signed in user', data)
-     setSignedIn(true);  //setting state to snackbar
+     setSignedIn(true);
+     setDisable(true);  //setting state to snackbar
   })
     .then(()=>{
       setTimeout(() => {navigate('/login')}, 2000)
@@ -71,6 +73,7 @@ export function SignUpForm() {
   const handleClose = () => {
     setSignedIn(false);
   }
+
  
   return (
     <>
@@ -108,7 +111,7 @@ export function SignUpForm() {
           helperText={touched.password && errors.password ? errors.password : null}
         />
         
-        <Button type='submit' style={signUpButton} variant="contained" color='success'>Create Account</Button>
+        <Button disabled={disable} type='submit' style={signUpButton} variant="contained" color='success'>Create Account</Button>
       </form>
     </div>
 

@@ -42,14 +42,15 @@ function CartProductSingle({sneaker, fetchCart, cart, setTotal}) {
 
   //getting the token
   const token = window.localStorage.getItem('token');
-
+  const user = window.localStorage.getItem('user');
 
   //function to remove sneaker from cart
   const removeProduct = async () => {
     const id = await sneaker._id;
+    const username = await user;
     fetch(`${API}/cart`, {
       method: "DELETE",
-      body: JSON.stringify({id: id}),
+      body: JSON.stringify({id: id, username: username}),
       headers: {
         "Content-type": "application/json",
         "auth-token": token

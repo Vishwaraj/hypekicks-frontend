@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { API } from "../../global";
 
+
 export function HomePage() {
 
   //to get category from url params
@@ -13,9 +14,14 @@ export function HomePage() {
   const [homeProducts, setHomeProducts] = useState([]);
   const [searchedProducts, setSearchedProducts] = useState(null);
 
+
+ 
+
+
   
   //getting the token 
   const token = window.localStorage.getItem('token');
+  const [sort, setSort] = useState('');
 
 
   //function to get products -->
@@ -23,12 +29,15 @@ export function HomePage() {
     fetch(`${API}/home`, {
       headers: {
         "Content-type": "application/json",
-        "auth-token": token 
+        "auth-token": token,
+        "sort-price": sort
       }
     })
       .then((result) => result.json())
       .then((data) => {
         //setting home products state
+
+        console.log(sort)
         setHomeProducts(data); 
         //setting searched products state
         setSearchedProducts(null);
@@ -84,13 +93,51 @@ export function HomePage() {
     setSearchTerm('');
   };
 
+
+ //state for sorting
+  
+  //function to handle sort -->
+  const handleSort = async (value) => {
+
+    setSort(value);
+    getProducts()
+    
+    // try {
+      
+    //   const result = await fetch(`${API}/home`, {
+    //     headers: {
+    //       "Content-type": "application/json",
+    //       "auth-token": token,
+    //       "sort-price": sort
+    //     }
+    //   })
+
+    //   console.log(  'yeee',sort)
+
+    //   const data = await result.json();
+
+    //   setHomeProducts(data);
+
+    // } catch (error) {
+    //   console.log(error)
+    // }
+
+    
+
+  }
+
+
+
  
   return (
     <div className="home-page">
       <SideBar
         handleClick={handleClick}
         clicked={clicked}
-        setClicked={setClicked} />
+        setClicked={setClicked} 
+        sort={sort}
+        handleSort={handleSort} 
+        />
       <div className="search-product-area">
         <SearchBar handleSearch={handleSearch} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         <ProductsList searchedProducts={searchedProducts} homeProducts={homeProducts} />

@@ -34,6 +34,7 @@ export function CartAddressBilling() {
   const token = window.localStorage.getItem('token');
 
 
+
   //function to redirect to payment gateway -->
   const handleClick = () => {
     fetch(`${API}/create-checkout-session`, {
@@ -41,7 +42,7 @@ export function CartAddressBilling() {
       body: JSON.stringify({username: username}),
       headers: {
         "Content-type": "application/json",
-        "auth-token": token
+        "auth-token": token,
       }
     })
     .then(result => result.json())

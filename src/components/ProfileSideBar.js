@@ -1,4 +1,4 @@
-import { Alert, Snackbar } from "@mui/material";
+import { Alert, MenuItem, Select, Snackbar } from "@mui/material";
 import Button from "@mui/material/Button";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -75,6 +75,7 @@ export function ProfileSideBar() {
       <Button style={sideBarButton} onClick={()=> {handleLogout()}} variant="text" color="inherit">
         Log out
       </Button>
+
     </div>
 
     <Snackbar open={loggedOut} autoHideDuration={6000} onClose={handleClose} >

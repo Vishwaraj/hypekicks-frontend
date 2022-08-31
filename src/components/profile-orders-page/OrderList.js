@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import {API} from '../../global';
 import "../../App.css";
+import { Card, CardContent, CardMedia } from "@mui/material";
 
 export function OrderList() {
 
@@ -32,25 +33,95 @@ export function OrderList() {
     getOrders()
   }, [])
 
-
+console.log(orders)
 
   return (
     <div className='order-list'>
-    {productsArr.map((sneaker) => {
-      return <OrderBody user={user} sneaker={sneaker} />
+    {orders.map((order) => {
+      return <OrderBody user={user} order={order} />
     })}
     </div>
   );
 }
 
-function OrderBody({user, sneaker}) {
+function OrderBody({user, order}) {
   return (
     <div className='order-body'>
-       <ProductOrder sneaker={sneaker} />
-       <ProfileOrderShipping user={user} />
+       {/* <ProductOrder sneaker={sneaker} />
+       <ProfileOrderShipping user={user} /> */}
+       <NewProductOrder user={user} order={order} />
     </div>
   );
 }
+
+function NewProductOrder({user, order}) {
+
+  let total;
+  if(order.sneakers.length > 1) {
+    total = order.sneakers.reduce((acc, curr) => (acc.price*acc.quantity) + (curr.price*curr.quantity));
+  } else {
+    total = order.sneakers[0].price
+  }
+
+
+  console.log(total);
+
+  return (
+    <>
+      <div className="new-product-order" >
+      <div className="new-order-details" >
+      <h3>Shipping to: {user}</h3>
+      <h3>Placed on : {order.date}</h3>
+      <h3>Total amount : Rs {total}</h3>
+      </div>
+
+      <div className='new-product-list' >
+      {order.sneakers.map((sneaker) => {
+        return <NewProductCard sneaker={sneaker} />
+      })}
+      </div>
+
+      </div>
+    </>
+  )
+}
+
+function NewProductCard({sneaker}) {
+
+  const cardStyle ={
+    width: '17vw'
+  }
+
+  let binaryImage = null;
+  if(sneaker.image) {
+    if(sneaker.image.length > 10000) {
+      binaryImage = `data:image/jpeg;base64,${sneaker.image}`
+    }
+  }
+
+  return (
+    <>
+      <div className="new-sneaker-card" >
+      <Card style={cardStyle} >
+      <CardMedia
+        component="img"
+        height="140"
+        image={binaryImage !== null ? binaryImage : sneaker.image}
+        alt={sneaker.name}
+       />
+       <CardContent>
+        <h4 className="product-card-margin-fix" >{sneaker.name}</h4>
+        <h4 className="product-card-margin-fix" >Size : {sneaker.size}</h4>
+        <h4 className="product-card-margin-fix" >Quantity : {sneaker.quantity}</h4>
+        <h4 className="product-card-margin-fix" >Price : Rs {sneaker.price}</h4>
+       </CardContent>
+      </Card>
+      </div>
+    </>
+  )
+}
+
+
 
 function ProductOrder({sneaker}) {
 

@@ -9,7 +9,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useNavigate } from 'react-router-dom';
 import AdminHeader from '../admin-header/AdminHeader';
 
-
+ 
 
 export default function AdminProductsAllSneakersPage() {
 

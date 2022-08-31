@@ -4,6 +4,8 @@ import { useEffect, useState, useContext } from "react";
 import { API } from "../../global";
 import { CartAddressProductList } from "./CartAddressProduct";
 import { globalContext } from "../../App";
+import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 export function BillingDetailsPage() {
 
@@ -40,11 +42,13 @@ export function BillingDetailsPage() {
     getAddressData();
   }, []);
 
+
+
   return (
     <div>
       <h1 id="cart-address-title">Billing Details</h1>
       <div className="cart-address-body">
-        {form ? <BillingAddress form={form} /> : <h1>Loading...</h1>}
+        {form ? <BillingAddress form={form} /> : <NoAddressFound /> }
 
         <div className="cart-address-billing">
           <CartAddressProductList />
@@ -54,4 +58,23 @@ export function BillingDetailsPage() {
       </div>
     </div>
   );
+}
+
+
+function NoAddressFound() {
+
+  const navigate = useNavigate();
+
+  const buttonStyles ={
+    marginTop: '1.5rem'
+  }
+
+  return (
+    <>
+      <div className="no-address-found" >
+      <h1 >No Address found</h1>
+      <Button style={buttonStyles} variant='outlined' color='inherit'  onClick={()=>navigate('/profile-page/addresses')}>Add Address</Button>
+      </div>
+    </>
+  )
 }
