@@ -58,7 +58,7 @@ function NewProductOrder({user, order}) {
 
   let total;
   if(order.sneakers.length > 1) {
-    total = order.sneakers.reduce((acc, curr) => (acc.price*acc.quantity) + (curr.price*curr.quantity));
+    total = order.sneakers.reduce((acc, curr) => acc + (curr.price*curr.quantity),0);
   } else {
     total = order.sneakers[0].price
   }

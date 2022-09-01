@@ -197,11 +197,11 @@ function OrdersAreaBody({order, sneakers}) {
 
     let total = 0;
     if(sneakers.length > 1) {
-        total = sneakers.reduce((acc, curr) => (acc.quantity*acc.price) + (curr.quantity*curr.price));
-        console.log(typeof total)
+        total = sneakers.reduce((acc, curr) => acc + (curr.quantity*curr.price), 0);
+ 
     } else {
         total = sneakers[0].price*sneakers[0].quantity;
-        console.log(typeof total)
+  
     }
 
 
