@@ -6,6 +6,7 @@ import { API } from '../../../global';
 import { Alert, Button, Card, CardContent, CardMedia, IconButton, Modal, Snackbar } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Box } from '@mui/system';
+import AdminHeader from '../admin-header/AdminHeader';
 
 
 
@@ -97,6 +98,7 @@ export function SingleUserPage() {
 
     return (
         <>
+        <AdminHeader />
             <div className='single-user-page'>
                 <AdminUsersSideBar />
                 {user && orders ?  
