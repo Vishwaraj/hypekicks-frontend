@@ -216,6 +216,7 @@
   gap: 3rem;
   flex-wrap: wrap;
   /* margin-left: 5rem; */
+  margin-top: 0.9rem;
 }
 
 .search-product-area {
@@ -229,6 +230,24 @@
 .single-shoe {
   width: 16vw;
 }
+
+.suggested-search {
+  height: 16vh;
+  width: 30vw;
+  margin-left: 11rem;
+  margin-top: -2rem;
+}
+
+.suggested-search-item:hover {
+   cursor: pointer;
+   color: black;
+}
+
+.suggested-search-item {
+  color: grey;
+}
+
+
 
 /* styles for single product page */
 

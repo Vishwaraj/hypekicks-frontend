@@ -6,15 +6,15 @@ import CardMedia from '@mui/material/CardMedia';
 import { NavLink, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import Pagination from '@mui/material/Pagination';
-import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
+import { FormControl, InputLabel, MenuItem, Select, Slider } from '@mui/material';
 
 
-export function SideBar({handleClick, setClicked, clicked, sort, handleSort }) {
+export function SideBar({handleClick, setClicked, clicked, sort, handleSort, handleRating, rating }) {
 
   //styles for text color
   const textColor = {
     color: 'white',
-    fontSize: '1.4rem'
+    fontSize: '1.4rem',
   };
 
   const navigate = useNavigate();
@@ -23,6 +23,43 @@ export function SideBar({handleClick, setClicked, clicked, sort, handleSort }) {
   //getting category from url params
   const {category} = useParams()
 
+  const ratingStyle ={
+    width: '12vw',
+    marginTop: '1rem',
+    paddingLeft: '1.1rem'
+  }
+
+  const valuetext = (value) => {
+    const rating = value/20;
+    return rating
+  }
+
+  const markings = [
+    {
+      label: '0',
+      value: 0
+    },
+    {
+      label: '1',
+      value: 20
+    },
+    {
+      label: '2',
+      value: 40
+    },
+    {
+      label: '3',
+      value: 60
+    },
+    {
+      label: '4',
+      value: 80
+    },
+    {
+      label: '5',
+      value: 100
+    }
+  ]
 
 
   return (
@@ -48,9 +85,10 @@ export function SideBar({handleClick, setClicked, clicked, sort, handleSort }) {
         disabled={category === 'all' ? true : false}
         >All</Button>
 
-        <FormControl style={{marginTop: '1rem'}} >
+        <FormControl style={{marginTop: '1rem', paddingLeft: '0.7rem'}} >
         <InputLabel style={{color: 'white'}} >Sort by Price</InputLabel>
         <Select
+        variant='standard'
         label="Sort by Price"
         value={sort}
         onChange={(e)=>handleSort(e.target.value)}
@@ -61,6 +99,20 @@ export function SideBar({handleClick, setClicked, clicked, sort, handleSort }) {
         </Select>
         </FormControl>
         
+        <div style={ratingStyle} >
+        <p style={{color: 'white', paddingLeft:0}}>Rating</p>
+        <Slider
+        defaultValue={1}
+        getAriaValueText={valuetext}
+        valueLabelFormat={valuetext}
+        valueLabelDisplay="auto"
+        step={20}
+        min={0}
+        max={100}
+        color='primary'
+        onChange={(e)=>handleRating(e)}
+        />
+        </div>
 
       </div>
     </div>
@@ -71,7 +123,7 @@ export function SearchBar({setSearchTerm, searchTerm, handleSearch}) {
   return (
     <div>
       <form className='search-bar'>
-        <TextField style={{width: "25rem"}} value={searchTerm} onChange={(e)=>setSearchTerm(e.target.value)} type='text' id="outlined-basic" variant="outlined" />
+        <TextField size='small' style={{width: "25rem"}} value={searchTerm} onChange={(e)=>setSearchTerm(e.target.value)} type='text' id="outlined-basic" variant="outlined" />
 
         <Button onClick={(event)=>handleSearch(event,searchTerm)} type='submit' variant="outlined" color='inherit'>Search</Button>
       </form>

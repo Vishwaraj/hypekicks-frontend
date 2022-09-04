@@ -22,6 +22,7 @@ export function HomePage() {
   //getting the token 
   const token = window.localStorage.getItem('token');
   const [sort, setSort] = useState('');
+  const [rating, setRating] = useState(null);
 
 
   //function to get products -->
@@ -30,7 +31,8 @@ export function HomePage() {
       headers: {
         "Content-type": "application/json",
         "auth-token": token,
-        "sort-price": sort
+        "sort-price": sort,
+        "rating": rating
       }
     })
       .then((result) => result.json())
@@ -81,6 +83,19 @@ export function HomePage() {
 
   //search code -->
   const [searchTerm, setSearchTerm] = useState('');
+  const [suggestedSearch, setSuggestedSearch] = useState(null);
+
+  useEffect(() => {
+       if(searchTerm.length > 0) {
+        const suggestions = homeProducts.filter((products) => {
+         return products.name.toLowerCase().includes(searchTerm);
+         })
+         setSuggestedSearch(suggestions);
+       } else {
+        setSuggestedSearch(null)
+       }
+       
+  }, [searchTerm])
 
   const handleSearch = async (event, searchTerm) => {
     event.preventDefault();
@@ -100,33 +115,39 @@ export function HomePage() {
   const handleSort = async (value) => {
 
     setSort(value);
-    getProducts()
-    
-    // try {
-      
-    //   const result = await fetch(`${API}/home`, {
-    //     headers: {
-    //       "Content-type": "application/json",
-    //       "auth-token": token,
-    //       "sort-price": sort
-    //     }
-    //   })
-
-    //   console.log(  'yeee',sort)
-
-    //   const data = await result.json();
-
-    //   setHomeProducts(data);
-
-    // } catch (error) {
-    //   console.log(error)
-    // }
-
-    
+    getProducts()    
 
   }
 
+  //steps to add rating filter
 
+  const getRatedProducts = async (number) => {
+    try {
+      const result = await fetch(`${API}/home/rating`, {
+        method: 'POST',
+        body: JSON.stringify({rating : number}),
+        headers: {
+          "Content-type": "application/json",
+          "auth-token": token,
+        }
+      })
+
+      const data = await result.json();
+
+      setHomeProducts(data);
+
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+
+  const handleRating = (e) => {
+    console.log(e.target.value/20);
+    const rating = Number(e.target.value/20)
+    setRating(rating);
+    getRatedProducts(rating);
+  }
 
  
   return (
@@ -137,11 +158,45 @@ export function HomePage() {
         setClicked={setClicked} 
         sort={sort}
         handleSort={handleSort} 
+        handleRating={handleRating}
         />
       <div className="search-product-area">
         <SearchBar handleSearch={handleSearch} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        {suggestedSearch !== null   ?      
+        <div className="suggested-search">
+        {suggestedSearch.slice(0,5).map((search) => {
+          return <SuggestedSearchElm search={search} />
+        }) }
+        </div>
+        : null
+        }
         <ProductsList searchedProducts={searchedProducts} homeProducts={homeProducts} />
       </div>
     </div>
   );
+}
+
+
+function SuggestedSearchElm({search}) {
+
+  const style = {
+    marginTop: 0,
+    marginBottom: '0.6rem',
+
+  }
+
+  const navigate = useNavigate();
+
+  const handleClick = (id) => {
+   navigate('/home/single-product/'+id)
+  }
+
+  return (
+    <>
+      <div >
+      <h5 className="suggested-search-item" onClick={()=>handleClick(search._id)} style={style}>{search.name}</h5>
+      </div>
+    </>
+  )
+
 }
