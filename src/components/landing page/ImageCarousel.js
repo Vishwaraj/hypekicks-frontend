@@ -6,15 +6,24 @@ export function ImageCarousel() {
     <div className='carousel-images'>
       <Carousel autoPlay={true} interval={6000} infiniteLoop={true} swipeable={true} showThumbs={false}>
         <div>
-          <img src='https://superkicks.in/wp-content/uploads/2022/04/space-hippie-web.jpg' alt='some-shoe' />
+          <img
+            src="https://i.ibb.co/cLJqpmd/space-hippie-web.jpg"
+            alt="some-shoe"
+          />
         </div>
 
         <div>
-          <img src='https://superkicks.in/wp-content/uploads/2022/04/BANNER-PARLEY-WRB-1.jpg' alt='some-shoe' />
+          <img
+            src="https://i.ibb.co/ChHfqkj/DESKTOP-LEBRO-BANNER.jpg"
+            alt="some-shoe"
+          />
         </div>
 
         <div>
-          <img src='https://superkicks.in/wp-content/uploads/2022/05/DESKTOP-LEBRO-BANNER.jpg' alt='some-shoe' />
+          <img
+            src="https://i.ibb.co/ZY3JSZz/BANNER-PARLEY-WRB-1.jpg"
+            alt="some-shoe"
+          />
         </div>
       </Carousel>
     </div>
